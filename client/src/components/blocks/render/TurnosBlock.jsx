@@ -1,16 +1,13 @@
-// TurnosBlock.jsx
 import React from "react";
 import axios from "axios";
 import "./styles/turnos.css"; // Archivo de estilos del bloque
 const apiUrl = import.meta.env.VITE_API_URL;
 
 const TurnosBlock = ({ configuration }) => {
-  // Se aplica el color de fondo de la configuración
   const containerStyle = {
     backgroundColor: configuration.backgroundColor || "#ffffff",
   };
 
-  // Se utiliza la imagen del costado de la configuracións
   const sideImage = configuration.sideImage;
 
   const [formData, setFormData] = React.useState({
@@ -59,6 +56,11 @@ const TurnosBlock = ({ configuration }) => {
           dudas: "",
         });
         setShowSuccessModal(true); // Mostrar el modal de éxito
+
+        // Registrar la solicitud de sesión en las métricas
+        await axios.post('/api/metrics/request', {
+          description: `Solicitud de sesión de ${formData.nombre} ${formData.apellidos}`,
+        });
       } else {
         alert("Error al enviar el formulario. Inténtalo de nuevo.");
       }

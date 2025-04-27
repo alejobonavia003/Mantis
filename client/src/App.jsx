@@ -16,6 +16,20 @@ import SingleProduct from "./pages/SingleProduct";
 import './styles/style.css'
 
 function App() {
+
+  useEffect(() => {
+    const registerVisit = async () => {
+      try {
+        await axios.post('/api/metrics/visit');
+      } catch (error) {
+        console.error('Error registering visit:', error);
+      }
+    };
+
+    registerVisit();
+  }, []);
+
+  
   return (
     <Router>
       <Header />
