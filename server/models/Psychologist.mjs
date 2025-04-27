@@ -26,7 +26,7 @@ const Psychologist = sequelize.define('Psychologist', {
     allowNull: false // Campo obligatorio
   },
   telefono: {
-    type: DataTypes.STRING(20)
+    type: DataTypes.STRING(200)
   },
   email: {
     type: DataTypes.STRING(255),

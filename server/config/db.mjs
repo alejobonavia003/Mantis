@@ -16,4 +16,25 @@ const sequelize = new Sequelize(DB_URL, {
   logging: false, // Opcional: desactivar logs SQL en consola
 });
 
+
+const connectDB = async () => {
+  try {
+    await sequelize.authenticate();
+    console.log('Connection has been established successfully.');
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
+};
+
+const syncDB = async () => {
+  try {
+    await sequelize.sync({ force: false  }); // alter: true para actualizar tablas existentes sin perder datos
+    console.log('All models were synchronized successfully.');
+  } catch (error) {
+    console.error('Error synchronizing the models:', error);
+  }
+};
+
+export { sequelize, connectDB, syncDB };
+
 export default sequelize;

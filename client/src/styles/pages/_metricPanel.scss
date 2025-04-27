@@ -1,0 +1,71 @@
+// client/src/styles/metricsPanel.scss
+
+@use '../base/variables';
+
+.metrics-panel {
+  padding: variables.$spacing-medium;
+  background-color: variables.$color-primary;
+  border-radius: variables.$border-radius;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  &__title {
+    font-size: variables.$font-size-large;
+    margin-bottom: variables.$spacing-medium;
+  }
+
+  &__subtitle {
+    font-size: variables.$font-size-medium;
+    margin-top: variables.$spacing-medium;
+    margin-bottom: variables.$spacing-small;
+  }
+
+  &__chart-container {
+    width: 100%;
+    max-width: 600px; // Ajusta el tamaño máximo del gráfico
+    margin: 0 auto; // Centra el gráfico
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: variables.$spacing-small;
+
+    th, td {
+      padding: variables.$spacing-small;
+      border: 1px solid variables.$color-gray-dark;
+      text-align: left;
+    }
+
+    th {
+      background-color: variables.$color-primary;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: variables.$color-primary-alt;
+    }
+  }
+
+  &__total-visits {
+    font-weight: bold;
+    margin-top: variables.$spacing-small;
+  }
+
+  &__mark-as-read-btn {
+    background-color: variables.$color-secondary;
+    color: variables.$color-white;
+    border: none;
+    padding: variables.$spacing-extrasmall variables.$spacing-small;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: variables.$font-size-small;
+    margin: variables.$spacing-mini variables.$spacing-small;
+    cursor: pointer;
+    border-radius: variables.$border-radius;
+
+    &:hover {
+      background-color: darken(variables.$color-secondary, 10%);
+    }
+  }
+
+}

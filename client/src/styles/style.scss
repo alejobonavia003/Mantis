@@ -21,9 +21,11 @@
 @use './components/wasapButton';
 @use './components/psicologoForm';
 
+
 // Pages
 @use './pages/admin';
 @use './pages/login';
 @use './pages/turnos';
 @use './pages/homePageRender';
 @use './pages/psychologistProfile';
+@use './pages/metricPanel';

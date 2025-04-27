@@ -9,11 +9,12 @@ import Sidebar from '../components/AdminSidebar';
 import PageEditor from '../components/AdminPageEditor';
 import AdminPsRegister from '../components/AdminPsRegister';
 import LogoEditor from '../components/AdminLogoEditor';
+import MetricsPanel from '../components/MetricsPanel';
 
 const Admin = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState('header');
+  const [activeTab, setActiveTab] = useState('mantenimientos');
   const [headerContents, setHeaderContents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -181,8 +182,8 @@ const Admin = () => {
             {activeTab === "rol-del-terapeuta" && <PageEditor page="rol-del-terapeuta" />}
             {activeTab === "mantenimientos" && (  
             <div>
-            <h2 className="adminTitle">Mantenimiento</h2>
-            <p>pagos, metricas y estados (proximamente )</p>
+            <h2 className="adminTitle">Metricas</h2>
+            <MetricsPanel />
             </div>
             )}
           </div>

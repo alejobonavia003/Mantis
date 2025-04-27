@@ -672,6 +672,26 @@ body {
   background-color: #76ada9;
   font-weight: bold;
 }
+.sidebar .sidebarSubList {
+  list-style: none;
+  padding: 0;
+  margin-top: 8px;
+}
+.sidebar .sidebarSubList li {
+  padding: 8px;
+  cursor: pointer;
+  margin-bottom: 8px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  font-size: 0.9rem;
+}
+.sidebar .sidebarSubList li:hover {
+  background-color: #E8D3B3;
+}
+.sidebar .sidebarSubList li.active {
+  background-color: #76ada9;
+  font-weight: bold;
+}
 
 .logoutButton {
   position: fixed;
@@ -2017,6 +2037,64 @@ body {
 .review .noReviews {
   color: #76ada9;
   font-style: italic;
+}
+
+.metrics-panel {
+  padding: 16px;
+  background-color: #F7EFCB;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.metrics-panel__title {
+  font-size: 1.6rem;
+  margin-bottom: 16px;
+}
+.metrics-panel__subtitle {
+  font-size: 1.4rem;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+.metrics-panel__chart-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.metrics-panel__table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+}
+.metrics-panel__table th, .metrics-panel__table td {
+  padding: 8px;
+  border: 1px solid #333333;
+  text-align: left;
+}
+.metrics-panel__table th {
+  background-color: #F7EFCB;
+}
+.metrics-panel__table tbody tr:nth-child(even) {
+  background-color: #E8D3B3;
+}
+.metrics-panel__total-visits {
+  font-weight: bold;
+  margin-top: 8px;
+}
+.metrics-panel__mark-as-read-btn {
+  background-color: #76ada9;
+  color: #ffffff;
+  border: none;
+  padding: 4px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.9rem;
+  margin: 2px 8px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.metrics-panel__mark-as-read-btn:hover {
+  background-color: rgb(89.8630136986, 150.1369863014, 145.7534246575);
 }
 
 /*# sourceMappingURL=style.css.map */

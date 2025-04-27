@@ -11,6 +11,8 @@ import productsRoutes from './routes/productsRoutes.mjs';
 import blockRoutes from './routes/blockRoutes.mjs';
 import psychologistRoutes from './routes/psychologistRoutes.mjs';
 import ComentariosRoutes from './routes/comentariosRoute.mjs';
+import metricsRoutes from './routes/metricsRoutes.mjs';
+import { connectDB, syncDB } from './config/db.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -34,6 +36,7 @@ app.use(cors(corsOptions));
 app.use(express.static(path.join(__dirname, "/dist")));
 app.use(express.static(path.join(__dirname, "/src")));
 app.use(express.static(path.join(__dirname, "/assets")));
+app.use('/api', metricsRoutes);
 //app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
 
@@ -53,6 +56,7 @@ app.use('/api/productos', productsRoutes);
 app.use('/api/blocks', blockRoutes);  
 app.use('/api/psychologists', psychologistRoutes);
 app.use('/api/reviews', ComentariosRoutes);
+app.use('/api', metricsRoutes);
 
 
 // Ruta catch-all para React Router
@@ -62,9 +66,14 @@ app.get('*', (req, res) => {
 
 app.get('/health', (req, res) => res.status(200).send('OK'));
 
-const PORT = process.env.PORT;
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
-});
+const startServer = async () => {
+  await connectDB();
+  await syncDB();
 
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+};
 
+startServer();

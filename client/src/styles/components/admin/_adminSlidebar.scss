@@ -1,6 +1,7 @@
+// client/src/styles/components/admin/_adminSlidebar.scss
+
 @use '../../base/variables';
 @use '../../base/mixins';
-
 
 .sidebar {
   background-color: variables.$color-gray-dark;
@@ -40,8 +41,31 @@
       }
     }
   }
-}
 
+  .sidebarSubList {
+    list-style: none;
+    padding: 0;
+    margin-top: variables.$spacing-small;
+
+    li {
+      padding: variables.$spacing-small;
+      cursor: pointer;
+      margin-bottom: variables.$spacing-small;
+      border-radius: variables.$border-radius;
+      transition: background-color 0.3s;
+      font-size: variables.$font-size-small;
+
+      &:hover {
+        background-color: variables.$color-primary-alt;
+      }
+
+      &.active {
+        background-color: variables.$color-secondary;
+        font-weight: bold;
+      }
+    }
+  }
+}
 
 .logoutButton {
   position: fixed;
