@@ -1,0 +1,248 @@
+@use '../base/variables';
+@use '../base/mixins';
+
+.headerDesktop {
+  // Usa tus estilos originales
+  position: relative;
+  z-index: 1000;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+.headerDropdown{
+  &:hover{
+    transition: background-color 0.2s;
+    background-color: variables.$color-primary-alt;  
+  }
+}
+
+  .logoContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: variables.$spacing-small;
+  }
+
+  .navContainer{
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    align-content: center;
+    width: 100%;
+    justify-content: center;
+    flex-direction: row;
+  }
+  
+// Estilos para el logo
+.logo {
+  max-width: 240px;
+  width: 240px;
+}
+  .navList {
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+    position: relative;
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+  
+  
+  .navItem {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: variables.$spacing-large; // Reemplaza 16px
+  }
+  
+  .navLink {
+    text-wrap-mode: nowrap;
+    text-decoration: none;
+    color: variables.$color-mantis-1;
+    padding: variables.$spacing-medium;
+    border-radius: 5px;
+    transition: color 0.3s, transform 0.3s;
+  
+    &:hover {
+      color: variables.$color-secondary;
+    }
+  }
+  
+  .hidden {
+    display: none;
+  }
+  .userIcon {
+    width: 24px;
+    height: 24px;
+    fill: variables.$color-mantis-1; // Usa el color blanco o el que prefieras
+    transition: fill 0.3s;
+  
+    &:hover {
+      fill: variables.$color-secondary; // Cambia el color al pasar el mouse
+    }
+  }
+
+  // Lo ocultamos por defecto en mobile:
+  display: flex;
+
+  // Lo mostramos a partir del breakpoint tablet (o el que tú uses)
+  @include mixins.tablet() {
+    display: none;
+  }
+
+  
+  .dropdown {
+    position: absolute;
+    top: 100% ;
+    left: 0;
+    background-color: variables.$color-primary-alt; // Asegura que tenga un fondo
+    list-style: none;
+
+    width: 100%;
+    display: none; // Se oculta por defecto
+    margin: 0;
+    padding: 10px, 0;
+    z-index: 1001;
+
+    //z-index: 10; // Asegura que se muestre por encima de otros elementos
+
+
+    .dropdownItem {
+      transition: background-color 0.2s;
+      padding: variables.$spacing-medium;
+      &:hover {
+        background-color: rgba(variables.$color-secondary, 0.1);
+      }
+    }
+  
+    .dropdownLink {
+      // Se aplican los mismos estilos de los navLink
+      text-decoration: none;
+      color: variables.$color-mantis-1;
+      padding: variables.$spacing-medium;
+
+      display: block; // Hace que ocupe toda la línea
+      transition: color 0.3s; // Se elimina la transformación para que no se agrande o achique
+  
+      &:hover {
+        color: variables.$color-secondary;
+        
+      }
+    }
+    
+  }
+
+  .navItem:hover .dropdown {
+    display: block; // Se muestra cuando se pasa el mouse por el navItem en escritorio
+
+    
+  }
+
+  
+}
+
+
+// ==========================
+// HEADER MOBILE
+// ==========================
+.headerMobile {
+  // Por defecto se muestra en mobile
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: variables.$spacing-extralarge;
+  background-color: variables.$color-primary; // El que tú desees
+
+  // Lo ocultamos a partir del breakpoint tablet
+  @media screen and (min-width: 750px) {
+    display: none;
+  }
+
+  .mobileLeft {
+    .logo {
+      width: 120px; // Ajusta a tu gusto
+      // ...
+    }
+  }
+
+  .mobileRight {
+    display: flex;
+    align-items: center;
+    gap: variables.$spacing-small;
+
+    .adminLink {
+      .userIcon {
+        width: 24px;
+        height: 24px;
+        fill: variables.$color-mantis-1;
+        transition: fill 0.3s;
+
+        &:hover {
+          fill: variables.$color-secondary;
+        }
+      }
+    }
+
+    .hamburger {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      height: 30px;
+      width: 30px;
+
+      .line {
+        width: 24px;
+        height: 3px;
+        background-color: variables.$color-mantis-1;
+        transition: background-color 0.3s;
+      }
+    }
+  }
+
+  // Menú deslizable desde la derecha
+  .slideMenu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 60%; // Ajusta el ancho
+    height: 100%;
+    background-color: variables.$color-primary;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    transform: translateX(100%); // Oculto por defecto (fuera de la pantalla)
+    transition: transform 0.3s ease;
+    padding: variables.$spacing-medium;
+    z-index: 999;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 50px 5px 5px 5px;
+    }
+
+    li {
+      margin-bottom: variables.$spacing-extralarge;
+
+      a {
+        color: variables.$color-mantis-1;
+        text-decoration: none;
+        font-size: 1.5rem;
+        &:hover {
+          color: variables.$color-secondary;
+        }
+      }
+    }
+
+    &.open {
+      transform: translateX(0); // Al abrirse, se mueve a la posición visible
+    }
+  }
+}

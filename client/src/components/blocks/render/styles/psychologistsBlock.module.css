@@ -1,0 +1,95 @@
+.psicologoscontainer {
+  padding: 0 2rem 2rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .card {
+    display: flex;
+    gap: 2rem;
+    margin: 3rem 0;
+    align-items: center;
+  }
+
+
+ .contentpsleft  {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-items: flex-start;
+  }
+  .contentpsright {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    flex-direction: column;
+}
+  .image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .content {
+    flex: 1;
+  }
+  
+  .title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  
+  .description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  
+  .psbutton {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #000;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    width: 200px;
+  }
+  
+  .button:hover {
+    transform: translateY(-2px);
+  }
+  
+  /* Alternar posición en móviles */
+  @media (max-width: 768px) {
+    .contentpsleft  {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-items: flex-start;
+  }
+  .contentpsright {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+  }
+  
+  /* Alternar posición en desktop */
+  @media (min-width: 769px) {
+    .left {
+      flex-direction: row;
+    }
+    
+    .right {
+      flex-direction: row-reverse;
+    }
+  }

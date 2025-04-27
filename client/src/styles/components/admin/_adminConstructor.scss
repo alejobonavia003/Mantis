@@ -1,0 +1,68 @@
+@use '../../base/variables';
+@use '../../base/mixins';
+
+.library-container {
+  padding: variables.$spacing-medium;
+  background: variables.$color-primary;
+  border-radius: variables.$border-radius;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.editorMain {
+  display: flex;
+  gap: variables.$spacing-medium;
+  flex-direction: row-reverse;
+  justify-content: center;
+}
+
+.blocks-grid {
+  display: grid;
+  gap: variables.$spacing-medium;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.block-card {
+  padding: variables.$spacing-large;
+  border: 1px solid variables.$color-gray-light;
+  border-radius: variables.$border-radius;
+  transition: transform 0.2s;
+  background-color: variables.$color-secondary;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  .block-header {
+    display: flex;
+    align-items: center;
+    gap: variables.$spacing-small;
+    margin-bottom: variables.$spacing-medium;
+
+    .block-icon {
+      font-size: variables.$font-size-large;
+      color: variables.$color-secondary;
+    }
+  }
+
+  .block-description {
+    color: variables.$color-gray-dark;
+    font-size: variables.$font-size-small;
+    min-height: 60px;
+    margin-bottom: variables.$spacing-medium;
+  }
+
+  .add-button {
+    width: 100%;
+    padding: variables.$spacing-small;
+    background: variables.$color-mantis-1;
+    color: variables.$color-white;
+    border: none;
+    border-radius: variables.$border-radius;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover {
+      background: darken(variables.$color-secondary, 10%);
+    }
+  }
+}

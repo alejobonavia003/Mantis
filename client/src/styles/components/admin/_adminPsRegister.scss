@@ -1,0 +1,173 @@
+@use '../../base/variables';
+@use '../../base/mixins';
+
+.ps-container {
+  padding: variables.$spacing-large;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: variables.$color-primary;
+  border-radius: variables.$border-radius;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  .ps-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: variables.$spacing-large;
+    color: variables.$color-detail-2;
+  }
+
+  .ps-form {
+    background: variables.$color-white;
+    padding: variables.$spacing-large;
+    border-radius: variables.$border-radius;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: variables.$spacing-large;
+
+    .form-group {
+      margin-bottom: variables.$spacing-medium;
+
+      label {
+        display: block;
+        margin-bottom: variables.$spacing-small;
+        font-weight: 500;
+        color: variables.$color-gray-dark;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: variables.$spacing-small;
+        border: 1px solid variables.$color-gray-light;
+        border-radius: variables.$border-radius;
+        font-size: variables.$font-size-small;
+
+        &:focus {
+          outline: none;
+          border-color: variables.$color-mantis-1;
+          box-shadow: 0 0 4px variables.$color-mantis-1;
+        }
+      }
+
+      textarea {
+        height: 100px;
+      }
+    }
+
+    .form-actions {
+      display: flex;
+      gap: variables.$spacing-small;
+      margin-top: variables.$spacing-medium;
+
+      button {
+        padding: variables.$spacing-small variables.$spacing-medium;
+        border: none;
+        border-radius: variables.$border-radius;
+        cursor: pointer;
+        font-size: variables.$font-size-small;
+        transition: background-color 0.3s ease;
+
+        &.save-button {
+          background-color: variables.$color-secondary;
+          color: variables.$color-white;
+
+          &:hover {
+            background-color: darken(variables.$color-secondary, 10%);
+          }
+        }
+
+        &.cancel-button {
+          background-color: variables.$color-detail-1;
+          color: variables.$color-white;
+
+          &:hover {
+            background-color: darken(variables.$color-detail-1, 10%);
+          }
+        }
+      }
+    }
+  }
+
+  .ps-list {
+    margin-top: variables.$spacing-large;
+
+    .ps-card {
+      background: variables.$color-white;
+      border: 1px solid variables.$color-gray-light;
+      border-radius: variables.$border-radius;
+      padding: variables.$spacing-medium;
+      margin-bottom: variables.$spacing-medium;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+      .card-header {
+        display: flex;
+        align-items: center;
+        gap: variables.$spacing-medium;
+        margin-bottom: variables.$spacing-small;
+
+        img {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 1px solid variables.$color-gray-light;
+        }
+
+        .card-info {
+          h4 {
+            font-size: variables.$font-size-small;
+            color: variables.$color-gray-dark;
+            margin-bottom: variables.$spacing-mini;
+          }
+
+          p {
+            font-size: variables.$font-size-xsmall;
+            color: variables.$color-gray-dark;
+          }
+        }
+      }
+
+      .card-actions {
+        display: flex;
+        gap: variables.$spacing-small;
+        margin-top: variables.$spacing-small;
+
+        button {
+          padding: variables.$spacing-small variables.$spacing-medium;
+          border: none;
+          border-radius: variables.$border-radius;
+          cursor: pointer;
+          font-size: variables.$font-size-small;
+          transition: background-color 0.3s ease;
+
+          &.edit-button {
+            background-color: variables.$color-primary-alt;
+            color: variables.$color-white;
+
+            &:hover {
+              background-color: darken(variables.$color-primary-alt, 10%);
+            }
+          }
+
+          &.delete-button {
+            background-color: variables.$color-detail-1;
+            color: variables.$color-white;
+
+            &:hover {
+              background-color: darken(variables.$color-detail-1, 10%);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .error-message {
+    color: variables.$color-detail-1;
+    padding: variables.$spacing-small;
+    background: lighten(variables.$color-detail-1, 40%);
+    border-radius: variables.$border-radius;
+    margin: variables.$spacing-small 0;
+    text-align: center;
+  }
+}

@@ -1,0 +1,174 @@
+@use '../base/variables';
+@use '../base/mixins';
+
+
+.adminContainer {
+    margin: 0;
+  }
+  
+  .adminTitle {
+    color: variables.$color-forest;
+    text-align: center;
+    margin-bottom: variables.$spacing-large;
+  }
+  
+  .section {
+    background: variables.$color-sand;
+    padding: variables.$spacing-medium;
+    border-radius: variables.$border-radius;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .grid {
+    display: grid;
+    gap: variables.$spacing-medium;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  
+  .inputGroup {
+    margin-bottom: variables.$spacing-medium;
+  
+    label {
+      display: block;
+      margin-bottom: variables.$spacing-small;
+      color: variables.$color-forest;
+      font-weight: 600;
+    }
+  
+    .textInput {
+      width: 100%;
+      padding: variables.$spacing-small;
+      border: 2px solid variables.$color-aqua;
+      border-radius: variables.$border-radius;
+      background: variables.$color-white;
+      color: variables.$color-forest;
+      transition: border-color 0.3s ease;
+  
+      &:focus {
+        outline: none;
+        border-color: variables.$color-deep-grass-green;
+      }
+  
+      &:disabled {
+        background-color: variables.$color-gray-light;
+        cursor: not-allowed;
+      }
+  
+      &::placeholder {
+        color: variables.$color-gray-dark;
+        font-style: italic;
+      }
+    }
+  }
+  
+  .loader {
+    text-align: center;
+    padding: variables.$spacing-medium;
+    color: variables.$color-gray-dark;
+    font-style: italic;
+  }
+  
+  .saveButton {
+    margin-top: variables.$spacing-large;
+    padding: variables.$spacing-small variables.$spacing-large;
+    background-color: variables.$color-gray-light;
+    color: variables.$color-gray-dark;
+    border: none;
+    border-radius: variables.$border-radius;
+    cursor: not-allowed;
+    transition: all 0.3s ease;
+  
+    &.active {
+      background-color: variables.$color-forest;
+      color: variables.$color-white;
+      cursor: pointer;
+    }
+  
+    &:disabled {
+      opacity: 0.7;
+      cursor: progress;
+    }
+  }
+  
+  .selectedImagePreview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: variables.$spacing-medium;
+    border: 1px solid variables.$color-gray-light;
+    border-radius: variables.$border-radius;
+    background-color: variables.$color-gray-light;
+    width: 300px;
+    margin: variables.$spacing-medium auto;
+  
+    h3 {
+      margin-bottom: variables.$spacing-small;
+      font-size: variables.$font-size-small;
+      color: variables.$color-gray-dark;
+    }
+  
+    img {
+      max-width: 100%;
+      max-height: 200px;
+      object-fit: contain;
+      border: 1px solid variables.$color-gray-light;
+      border-radius: variables.$border-radius;
+    }
+  }
+  
+  .galleryContainer {
+    padding: variables.$spacing-medium;
+    border: 1px solid variables.$color-gray-light;
+    border-radius: variables.$border-radius;
+    margin-top: variables.$spacing-medium;
+  }
+  
+  .selectImageButtonContainer {
+    padding: variables.$spacing-small variables.$spacing-medium;
+    border: none;
+    cursor: pointer;
+    border-radius: variables.$border-radius;
+    font-size: variables.$font-size-small;
+    transition: 0.3s;
+  
+    .selectImageButton {
+      background-color: variables.$color-forest;
+      color: variables.$color-white;
+    }
+  }
+  
+  .uploadSection {
+    margin-bottom: variables.$spacing-medium;
+  }
+  
+  .imagesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: variables.$spacing-small;
+  }
+  
+  .imageItem {
+    position: relative;
+    text-align: center;
+  
+    .galleryImage {
+      width: 100%;
+      height: auto;
+      cursor: pointer;
+      border: 1px solid variables.$color-gray-light;
+      border-radius: variables.$border-radius;
+    }
+  
+    .deleteButton {
+      position: absolute;
+      top: variables.$spacing-mini;
+      right: variables.$spacing-mini;
+      background-color: rgba(255, 0, 0, 0.7);
+      border: none;
+      color: variables.$color-white;
+      cursor: pointer;
+      padding: variables.$spacing-mini variables.$spacing-small;
+      border-radius: variables.$border-radius;
+      font-size: variables.$font-size-xsmall;
+    }
+  }

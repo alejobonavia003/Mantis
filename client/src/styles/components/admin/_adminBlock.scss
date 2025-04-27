@@ -1,0 +1,112 @@
+@use '../../base/variables';
+@use '../../base/mixins';
+
+.block-library {
+  background: variables.$color-white;
+  padding: variables.$spacing-large;
+  border-radius: variables.$border-radius;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.block-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: variables.$spacing-medium;
+  margin-top: variables.$spacing-medium;
+}
+
+.block-card {
+  background: variables.$color-gray-light;
+  padding: variables.$spacing-medium;
+  border-radius: variables.$border-radius;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s;
+  border: 2px dashed variables.$color-gray-light;
+  text-align: center;
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: variables.$color-mantis-1;
+  }
+}
+
+.editor-container {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: variables.$spacing-large;
+  padding: variables.$spacing-large;
+}
+
+.blocks-container {
+  background: variables.$color-primary;
+  padding: variables.$spacing-large;
+  border-radius: variables.$border-radius;
+  min-height: 500px;
+}
+
+.block-item {
+  background: variables.$color-white;
+  padding: variables.$spacing-medium;
+  margin-bottom: variables.$spacing-small;
+  border-radius: variables.$border-radius;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+
+  &.selected {
+    box-shadow: 0 0 0 2px variables.$color-mantis-1;
+  }
+}
+
+.block-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: variables.$spacing-small;
+}
+
+.delete-button {
+  background: variables.$color-detail-1;
+  color: variables.$color-white;
+  border: none;
+  padding: variables.$spacing-small variables.$spacing-medium;
+  border-radius: variables.$border-radius;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background: darken(variables.$color-detail-1, 10%);
+  }
+}
+
+.config-editor {
+  margin-top: variables.$spacing-large;
+  padding: variables.$spacing-large;
+  background: variables.$color-white;
+  border-radius: variables.$border-radius;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.config-form {
+  label {
+    display: block;
+    margin-bottom: variables.$spacing-small;
+    font-weight: bold;
+    color: variables.$color-gray-dark;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: variables.$spacing-small;
+    margin-top: variables.$spacing-mini;
+    border: 1px solid variables.$color-gray-light;
+    border-radius: variables.$border-radius;
+    font-size: variables.$font-size-small;
+
+    &:focus {
+      outline: none;
+      border-color: variables.$color-mantis-1;
+      box-shadow: 0 0 4px variables.$color-mantis-1;
+    }
+  }
+}

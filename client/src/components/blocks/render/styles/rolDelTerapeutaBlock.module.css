@@ -1,0 +1,80 @@
+/* Contenedor principal del bloque */
+.rolBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Contenedor del texto (título y descripción) */
+.roltextContent {
+  max-width: 700px;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.roltitle {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #516f61;
+}
+
+.roldescription {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Contenedor de las prácticas */
+.practicesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+/* Fila de prácticas */
+.practiceRow {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* Estilo de cada práctica */
+.practice {
+  width: 300px;
+  height: 200px;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.good {
+  background-color: #9dcdbb;
+}
+
+.bad {
+  background-color: #e897a0;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+
+
+  .practice {
+    width: 100%; /* Ajusta el ancho al 100% en pantallas pequeñas */
+    height: auto; /* Ajusta la altura automáticamente */
+  }
+}

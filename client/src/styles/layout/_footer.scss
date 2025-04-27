@@ -1,0 +1,78 @@
+@use '../base/variables';
+@use '../base/mixins';
+
+.footer {
+  background-color: variables.$color-primary; // Color predominante
+  padding: variables.$spacing-large variables.$spacing-medium; // Usar variables para el padding
+  text-align: center;
+  border-top: 1px solid variables.$color-secondary; // Color secundario para el borde
+
+  .navList {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: variables.$spacing-medium; // Usar variable para el espacio entre elementos
+    padding: 0;
+    margin: 0 0 variables.$spacing-medium 0;
+    flex-wrap: wrap; // Permitir que los elementos se envuelvan en móviles
+  }
+
+  .navItem {
+    margin: 0;
+  }
+
+  .navLink {
+    color: variables.$color-mantis-1; // Color del texto
+    text-decoration: none;
+    font-size: variables.$font-size-small; // Usar variable para el tamaño de la fuente
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: variables.$color-detail-2; // Color para detalles al pasar el mouse
+    }
+  }
+
+  .footerText {
+    color: variables.$color-mantis-1; // Color del texto
+    font-size: variables.$font-size-xsmall; // Usar variable para el tamaño de la fuente
+    margin: 0;
+  }
+
+  // Media Queries para móviles (450px o menos)
+  @include mixins.movil() {
+    .footer {
+      padding: variables.$spacing-medium variables.$spacing-small; // Reducir el padding
+    }
+
+    .navList {
+      gap: variables.$spacing-small; // Reducir el espacio entre elementos
+    }
+
+    .navLink {
+      font-size: variables.$font-size-xsmall; // Reducir el tamaño de la fuente
+    }
+
+    .footerText {
+      font-size: variables.$font-size-xxsmall; // Reducir el tamaño de la fuente
+    }
+  }
+
+  // Media Queries para pantallas muy pequeñas (300px o menos)
+  @include mixins.minimovil() {
+    .footer {
+      padding: variables.$spacing-small variables.$spacing-mini; // Reducir aún más el padding
+    }
+
+    .navList {
+      gap: variables.$spacing-mini; // Reducir el espacio entre elementos
+    }
+
+    .navLink {
+      font-size: variables.$font-size-xxsmall; // Reducir el tamaño de la fuente
+    }
+
+    .footerText {
+      font-size: variables.$font-size-xxxsmall; // Reducir el tamaño de la fuente
+    }
+  }
+}

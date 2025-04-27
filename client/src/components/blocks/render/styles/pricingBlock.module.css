@@ -1,0 +1,205 @@
+.outerContainer {
+    padding: 100px;
+}
+
+
+.pricingSection {
+  text-align: center;
+  border-radius: 15px;
+  border: 1px solid #000;
+  position: relative;
+  margin: 0 4rem;
+  padding: 4rem 0 0 0;
+  background-color: #E8D3B3;
+  }
+
+  .faqItempricing{
+    padding: 2rem 0 0 0;
+  }
+
+.faqQuestionPricing {
+  font-size: 1rem;
+  padding: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #E8D3B3;
+  border-radius: 15px;
+}
+
+  /* Círculo con imagen central */
+  .decorationCircle {
+    position: absolute;
+    width: 120px;
+    height: 120px; /* Mitad de altura para efecto semicírculo */
+    border-radius: 60px 60px 0 0; /* Solo redondeado en parte superior */
+    overflow: hidden;
+    top: -60px; /* Mitad de la altura del círculo */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+  
+  .decorationCircle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+
+  .sectionTitle {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #516f61;
+  }
+
+  .cardContent {
+    border-radius: 15px;
+    border: 1px solid #000;
+    margin: 2rem;
+    min-height: 200px; /* Ajuste de altura mínima */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+  
+  .cardsContainer {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .pricingCard {
+    background: white;
+    border: 1px solid #000; /* Borde negro para tarjetas */
+    border-radius: 12px;
+    padding: 2rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .pricingCard:hover {
+    transform: translateY(-5px);
+  }
+  
+  .cardHeader {
+    flex-grow: 1; /* Permite que el contenido del header ocupe espacio disponible */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+  
+  .cardHeader h3 {
+    font-size: 2rem;
+    color: #000;
+    margin-bottom: 0.5rem;
+  }
+  
+  .duration {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  .price {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 1rem 0;
+  }
+  
+  .description {
+    color: #000;
+  }
+  
+  .cardButton {
+    display: inline-block;
+    padding: 1rem 8rem;
+    border: 1px solid #000; /* Borde negro grueso */
+    color: #dcd8c7;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+  
+  .cardButton:hover {
+    opacity: 0.9;
+  }
+  
+  @media (max-width: 600px) {
+    .outerContainer {
+      padding: 10px; /* Reducción de padding para mejor ajuste */
+    }
+  
+    .pricingSection {
+      margin: 1rem;
+      padding: 3rem 0 0 0;
+      margin-top: 80px; /* Reducción del margen superior */
+      border-width: 1px; /* Borde más delgado */
+    }
+  
+  
+    .sectionTitle {
+      font-size: 1.8rem; /* Tamaño de fuente reducido */
+      padding: 15px 0 0 0;
+    }
+  
+    .cardsContainer {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      max-width: 1200px;
+      margin: 0 auto;
+      grid-auto-rows: 1fr; /* Todas las filas tendrán el mismo tamaño */
+  }
+  
+  
+    .cardContent {
+      margin: 0.5rem 5rem;
+      padding: 2rem 1rem; /* Padding interno reducido */
+    }
+  
+    .pricingCard {
+      padding: 1rem; /* Espaciado interno reducido */
+      min-height: auto; /* Altura automática */
+    }
+  
+    .cardHeader h3 {
+      font-size: 1.3rem; /* Tamaño de título reducido */
+    }
+  
+    .price {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin: 1rem 0;
+      text-align: center;
+      min-width: 100px;
+  }
+  
+
+  
+  
+    .description {
+      font-size: 0.9rem; /* Tamaño de texto reducido */
+      line-height: 1.4; /* Mejor interlineado */
+    }
+
+  
+    /* Eliminar hover en móvil si es necesario */
+    .cardButton:hover {
+      transform: none;
+    }
+
+    .faqItempricing {
+      padding: 1rem 0 0 0;
+    }
+    .buttonContainerPricing {
+      margin-top: 1rem;
+    }
+
+  }

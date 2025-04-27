@@ -1,0 +1,45 @@
+@use './variables';
+
+// Fuentes personalizadas
+  
+@font-face {
+    font-family: 'Libre Baskerville';
+    src: url('/fonts/LibreBaskerville-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+/*
+  @font-face {
+    font-family: 'Libre Baskerville';
+    src: url('/../../src/fonts/LibreBaskerville-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Libre Baskerville';
+    src: url('/../../src/fonts/LibreBaskerville-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+  }
+    */
+  @font-face {
+    font-family: 'Questrial';
+    src: url('/fonts/Questrial-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  // Variables de tipografía
+  $font-primary: 'Libre Baskerville', serif;
+  $font-secondary: 'Questrial', sans-serif;
+
+
+  h1, h2, h3 {
+    font-family: $font-primary;
+    color: variables.$color-gray-dark;
+  }
+  
+  body {
+    font-family: $font-secondary;
+  }

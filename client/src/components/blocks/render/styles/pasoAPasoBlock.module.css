@@ -1,0 +1,126 @@
+.pasoContainer {
+  padding: 2rem;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+
+.titulo > h2 {
+  color: #516f61;
+  font-size: 2rem;
+}
+
+
+.description {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.stepsContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: space-around;
+}
+
+.stepBlock {
+  max-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.imageContainer {
+  margin: 3rem 0 3rem 0;
+}
+
+.stepImage {
+  border-radius: 0.75rem;
+  width: 100px;
+  height: 100px;
+}
+
+.stepline {
+  width: 100%;
+  height: 1px;
+  color: #516f61;
+  margin: 3rem auto;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.stepNumber {
+  font-weight: bold;
+  font-size: 3rem;
+  color: #9dcdbb;
+  margin-bottom: 0.5rem;
+}
+
+.stepDescription {
+  font-size: 1rem;
+  color: #444;
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.actionButton {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  color: #dfd8c7;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.pasobotonescontainer{
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.actionButton:hover {
+  filter: brightness(1.1);
+}
+
+.actionButton2 {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  color: #516f61;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.actionButton2:hover {
+  filter: brightness(1.1);
+}
+
+
+@media screen and (max-width: 768px) {
+  .stepsContainer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0px;
+  }
+
+  .stepBlock {
+    max-width: 100%;
+
+  }
+
+  
+}

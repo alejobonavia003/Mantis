@@ -1,0 +1,43 @@
+@use './variables';
+
+html, body {
+  width: 100%;
+  min-width: 500px;
+  height: 100%;
+  margin: 0;
+  background-color: variables.$color-primary;
+  color: variables.$text-color; // Asegúrate de definir el color del texto
+}
+
+.appContainer {
+    display: flex;
+    flex-direction: column;
+    //min-height: variables.$min-height-full; // Usa la variable definida con el prefijo
+    min-height: variables.$min-height-full;
+  }
+
+  .content {
+    flex: 1; // Empuja el footer hacia abajo
+    width: 100%; // Asegurar que el contenido ocupe todo el ancho
+    box-sizing: border-box; // Incluir padding y border en el tamaño total
+  }
+  
+  .content {
+    flex: 1; // Empuja el footer hacia abajo
+  }
+
+  .ql-align-justify {
+    text-align: justify;
+}
+.ql-align-center {
+    text-align: center;
+}
+
+:root {
+  color-scheme: light;
+}
+
+
+
+
+

@@ -1,0 +1,57 @@
+.configForm {
+  gap: 15px;
+  padding: 5px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: #23282d;
+  font-family: sans-serif;
+  max-width: 1000px;
+  margin: auto;
+  border: 1px solid #e1e4e8;
+}
+
+.listItem > button{
+background-color: rgb(255, 36, 36);
+}
+
+.imageiconlist{
+  width: 20%;
+  height: auto;
+}
+
+
+.label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #444;
+}
+/*AGREGADO*/
+.configForm img {
+  height: 50px;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d1d5da;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: #f8f9fa;
+  color: #333;
+  transition: all 0.2s ease-in-out;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  border-color: #0056b3;
+  box-shadow: 0 0 4px rgba(0, 86, 179, 0.3);
+}
+
+.textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+

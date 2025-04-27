@@ -1,0 +1,31 @@
+.previewFeatures {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    margin: 20px 0;
+  }
+  
+  .featureColumn {
+    flex: 1;
+    margin: 0 10px;
+    text-align: center;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .featureColumn:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .featureColumn h4 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+  }
+  
+  .featureColumn p {
+    font-size: 1rem;
+    margin: 0;
+  }
+  

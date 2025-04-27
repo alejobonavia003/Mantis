@@ -1,0 +1,121 @@
+.previewHero {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  margin: 0;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroContent {
+  max-width: 800px;
+  margin: 0 auto;
+  z-index: 2;
+  min-height: 25vh;
+  display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.heroTitle {
+  font-size: 3rem;
+  color: #516f61;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.heroTitle > h2{
+  color: #516f61;
+}
+
+p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+  
+}
+
+.buttonContainer {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.heroButton {
+  color: #dfd8c7;
+  padding: 0.5rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+
+  &:hover {
+    background-color: #9dcdbb;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+}
+.heroButton2 {
+  color: #516f61;
+  padding: 0.5rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+
+  &:hover {
+    background-color: #9dcdbb;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+}
+.heroButton3 {
+  color: #516f61;
+  padding: 0.5rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+
+  &:hover {
+    background-color: #9dcdbb;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Estilos para las manchas flotantes (nuevo) */
+.blob {
+  position: absolute;
+  z-index: 1;              /* Debajo del contenido (que tiene z-index: 2) */
+  width: 150px;            /* Ajusta el tamaño de la mancha */
+  height: auto;
+  opacity: 0.8;            /* Ajusta transparencia si quieres */
+  pointer-events: none;    /* No interfiere con clics en el hero */
+  animation: floatBlob 5s ease-in-out infinite alternate;
+}
+
+@media screen and (max-width: 750px) {
+  .blob {
+    width: 50px;            /* Ajusta el tamaño de la mancha */
+    height: auto;
+  }
+
+  
+}
+
+@keyframes floatBlob {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(20px);
+  }
+}

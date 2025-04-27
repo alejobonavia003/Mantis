@@ -1,0 +1,387 @@
+@use '../base/variables';
+@use '../base/mixins';
+
+// Contenedor principal
+.singleProductContainer {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$spacing-large;
+  background-color: variables.$color-primary; // Fondo blanco
+  border-radius: variables.$border-radius;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Sombra sutil
+  padding: variables.$spacing-medium;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @include mixins.tablet() {
+    padding: variables.$spacing-small;
+  }
+}
+
+// Galería de imágenes
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .mainImage {
+    width: 100%;
+    margin-bottom: variables.$spacing-small;
+    text-align: center;
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      max-width: 400px;
+      border-radius: variables.$border-radius;
+
+      @include mixins.movil() {
+        max-width: 100%;
+        border-radius: 0;
+      }
+    }
+  }
+
+  .thumbnails {
+    display: flex;
+    gap: variables.$spacing-small;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .thumbnail,
+    .thumbnailActive {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border: 2px solid variables.$color-gray-light;
+      cursor: pointer;
+
+      @include mixins.movil() {
+        width: 50px;
+        height: 50px;
+      }
+
+      @include mixins.minimovil() {
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    .thumbnailActive {
+      border-color: variables.$color-forest;
+    }
+  }
+}
+
+// Información del producto
+.productInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .category {
+    font-size: variables.$font-size-small;
+    font-weight: 600;
+    color: variables.$color-gray-dark;
+    margin-bottom: variables.$spacing-mini;
+  }
+
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: variables.$spacing-small;
+    color: variables.$color-gray-dark;
+
+    @include mixins.tablet() {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  }
+
+  .price {
+    font-size: 1.5rem;
+    color: variables.$color-detail-1;
+    margin-bottom: variables.$spacing-small;
+
+    @include mixins.movil() {
+      font-size: 1.2rem;
+    }
+  }
+
+  .stock {
+    font-size: 1rem;
+    margin-bottom: variables.$spacing-medium;
+    color: variables.$color-secondary;
+
+    @include mixins.movil() {
+      font-size: variables.$font-size-small;
+    }
+  }
+
+  .addToCart {
+    background-color: variables.$color-forest;
+    color: variables.$color-white;
+    padding: variables.$spacing-small variables.$spacing-large;
+    border-radius: variables.$border-radius;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-bottom: variables.$spacing-large;
+
+    &:hover {
+      background-color: variables.$color-deep-grass-green;
+    }
+
+    @include mixins.movil() {
+      padding: variables.$spacing-small variables.$spacing-medium;
+      font-size: variables.$font-size-small;
+    }
+  }
+
+  .shortDescription {
+    font-size: variables.$font-size-medium;
+    color: variables.$color-gray-dark;
+    line-height: 1.5;
+    margin-bottom: variables.$spacing-medium;
+
+    @include mixins.movil() {
+      font-size: variables.$font-size-small;
+    }
+  }
+}
+
+// Sistema de pestañas
+.tabs {
+  display: flex;
+  gap: variables.$spacing-medium;
+  margin-bottom: variables.$spacing-medium;
+  justify-content: space-around;
+
+  button {
+    background-color: variables.$color-gray-light;
+    border: none;
+    padding: variables.$spacing-small variables.$spacing-medium;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: variables.$border-radius;
+
+    &:hover {
+      background-color: variables.$color-gray-dark;
+      color: variables.$color-white;
+    }
+
+    &.activeTab {
+      background-color: variables.$color-forest;
+      color: variables.$color-white;
+    }
+
+    @include mixins.tablet() {
+      padding: variables.$spacing-small;
+      font-size: variables.$font-size-small;
+      
+
+    }
+  }
+}
+
+// Contenido de la pestaña
+.tabContent {
+    display: flex;
+  border-top: 1px solid variables.$color-gray-light;
+  padding-top: variables.$spacing-medium;
+
+  .longDescription,
+  .reviews {
+    line-height: 1.6;
+    color: variables.$color-gray-dark;
+
+    @include mixins.tablet() {
+      font-size: variables.$font-size-small;
+      justify-content: center;
+    }
+  }
+
+  @include mixins.tablet() {
+    justify-content: center;
+  }
+}
+
+// Productos relacionados
+.relatedProducts {
+  grid-column: 1 / span 2;
+  margin-top: variables.$spacing-extralarge;
+  text-align: center;
+
+  h2 {
+    margin-bottom: variables.$spacing-medium;
+
+    @include mixins.movil() {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.digitalProductNotice {
+  text-align: center;
+  font-size: variables.$font-size-small;
+  color: variables.$color-gray-dark;
+  margin-top: variables.$spacing-medium;
+}
+
+/// Línea divisoria
+.divider {
+    border: 0;
+    height: 1px;
+    background-color: variables.$color-mantis-1; // Color de la línea
+    margin: variables.$spacing-medium 0;
+  }
+  
+  // Descripción larga y valoraciones
+  .detailsSection {
+    margin-top: variables.$spacing-medium;
+    padding: variables.$spacing-medium;
+    background-color: variables.$color-primary; // Fondo claro
+    display: flex;
+    justify-content: center;
+
+    .longDescription {
+      font-size: variables.$font-size-medium;
+      color: variables.$color-gray-dark;
+      line-height: 1.6;
+      width: 100%;
+
+
+      @include mixins.movil() {
+        font-size: variables.$font-size-small;
+      }
+    }
+  }
+  
+  // Contenedor principal
+  .totalContainer {
+    display: flex;
+    flex-direction: column;
+    gap: variables.$spacing-medium; // Espaciado entre secciones
+    padding: variables.$spacing-medium; // Espaciado interno
+    background-color: variables.$color-primary; // Fondo claro
+  }
+  
+  // Parte inferior
+  .parteInferior {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: variables.$spacing-medium;
+  }
+
+// Cabecera del producto (portada e información)
+.productHeader {
+  display: flex;
+  gap: variables.$spacing-large;
+
+  @include mixins.tablet() {
+    flex-direction: column;
+  }
+}
+
+// Imagen de portada
+.portada {
+  flex: 1;
+  max-width: 400px;
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: variables.$border-radius;
+    object-fit: cover;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Sombra ligera
+  }
+}
+
+// Precio del producto
+.productPrice {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: variables.$color-detail-1;
+  text-align: center;
+  margin-bottom: variables.$spacing-medium;
+
+  @include mixins.movil() {
+    font-size: 1.2rem;
+  }
+}
+
+// Galería de imágenes adicionales
+.otherImages {
+  display: flex;
+  gap: variables.$spacing-small;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: variables.$spacing-medium;
+
+  img {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: variables.$border-radius;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Sombra ligera
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05); // Efecto de zoom al pasar el cursor
+    }
+  }
+}
+
+// Botón para hacer el pedido
+.orderButtonContainer {
+  text-align: center;
+  margin-top: variables.$spacing-medium;
+
+  .orderButton {
+    background-color: variables.$color-forest;
+    color: variables.$color-white;
+    padding: variables.$spacing-small variables.$spacing-large;
+    border-radius: variables.$border-radius;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: variables.$color-deep-grass-green;
+    }
+
+    @include mixins.movil() {
+      padding: variables.$spacing-small variables.$spacing-medium;
+      font-size: variables.$font-size-small;
+    }
+  }
+}
+
+.imageModalProduct {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); // Fondo oscuro semitransparente
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  cursor: pointer;
+
+  .modalContentProduct {
+    max-width: 80%;
+    max-height: 80%;
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: variables.$border-radius;
+     
+    }
+  }
+}

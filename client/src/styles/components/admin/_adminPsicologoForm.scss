@@ -1,0 +1,155 @@
+@use '../../base/variables';
+@use '../../base/mixins';
+
+.form {
+  background-color: variables.$color-primary;
+  padding: variables.$spacing-large;
+  border-radius: variables.$border-radius;
+  max-width: 800px;
+  margin: 0 auto;
+
+  .formGroup {
+    margin-bottom: variables.$spacing-medium;
+
+    label {
+      display: block;
+      margin-bottom: variables.$spacing-small;
+      font-weight: 600;
+      color: variables.$color-mantis-1;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: variables.$spacing-small;
+      border: 1px solid variables.$color-gray-light;
+      border-radius: variables.$border-radius;
+      font-size: variables.$font-size-small;
+      color: variables.$color-gray-dark;
+
+      &:focus {
+        outline: none;
+        border-color: variables.$color-mantis-1;
+        box-shadow: 0 0 4px variables.$color-mantis-1;
+      }
+    }
+
+    textarea {
+      resize: none;
+      height: 100px;
+    }
+  }
+
+  .imageInputContainer {
+    display: flex;
+    align-items: center;
+    gap: variables.$spacing-small;
+
+    .galleryButtons {
+      display: flex;
+      gap: variables.$spacing-small;
+
+      .galleryButton {
+        padding: variables.$spacing-small variables.$spacing-medium;
+        background-color: variables.$color-secondary;
+        color: variables.$color-white;
+        border: none;
+        border-radius: variables.$border-radius;
+        cursor: pointer;
+        font-size: variables.$font-size-small;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: darken(variables.$color-secondary, 10%);
+        }
+      }
+    }
+  }
+
+  .imagePreview {
+    margin-top: variables.$spacing-small;
+
+    img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: variables.$border-radius;
+      border: 1px solid variables.$color-gray-light;
+    }
+  }
+
+  .arrayInput {
+    display: flex;
+    gap: variables.$spacing-small;
+
+    input {
+      flex: 1;
+    }
+
+    button {
+      padding: variables.$spacing-small variables.$spacing-medium;
+      background-color: variables.$color-primary-alt;
+      color: variables.$color-white;
+      border: none;
+      border-radius: variables.$border-radius;
+      cursor: pointer;
+      font-size: variables.$font-size-small;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: darken(variables.$color-primary-alt, 10%);
+      }
+    }
+  }
+
+  .arrayList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: variables.$spacing-mini;
+    margin-top: variables.$spacing-small;
+
+    .arrayItem {
+      background-color: variables.$color-gray-light;
+      padding: variables.$spacing-mini variables.$spacing-small;
+      border-radius: 15px;
+      font-size: variables.$font-size-xsmall;
+      color: variables.$color-gray-dark;
+    }
+  }
+
+  .formActions {
+    display: flex;
+    gap: variables.$spacing-small;
+    margin-top: variables.$spacing-large;
+
+    .saveButton {
+      padding: variables.$spacing-small variables.$spacing-medium;
+      background-color: variables.$color-secondary;
+      color: variables.$color-white;
+      border: none;
+      border-radius: variables.$border-radius;
+      cursor: pointer;
+      font-size: variables.$font-size-small;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: darken(variables.$color-secondary, 10%);
+      }
+    }
+
+    .cancelButton {
+      padding: variables.$spacing-small variables.$spacing-medium;
+      background-color: variables.$color-detail-1;
+      color: variables.$color-white;
+      border: none;
+      border-radius: variables.$border-radius;
+      cursor: pointer;
+      font-size: variables.$font-size-small;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: darken(variables.$color-detail-1, 10%);
+      }
+    }
+  }
+}

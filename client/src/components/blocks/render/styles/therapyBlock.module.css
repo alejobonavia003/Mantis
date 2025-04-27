@@ -1,0 +1,117 @@
+/* CORRECCIÓN: Usar nombres de clases consistentes */
+.therapyBlock {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+}
+
+.mainTitle {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #516f61;
+}
+
+.quadrantsContainer { /* Se llamaba .quadrants-wrapper */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.quadrant { /* Se llamaba .quadrant-box */
+  position: relative;
+  width: 45%;
+  min-height: 150px;
+  padding: 20px;
+  background: #f3efdb61;
+  border: 2px solid transparent;
+  border-radius: 20px;
+  background-clip: padding-box;
+  border-image: linear-gradient(to right, #F7EFCB, #506d5c) 1;
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.quadrantNONE {
+  position: relative;
+  width: 45%;
+  min-height: 150px;
+  padding: 20px;
+  background: #f3efdb61;
+  border: 2px solid transparent;
+  border-radius: 20px;
+  background-clip: padding-box;
+  border-image: linear-gradient(to right, #F7EFCB, #506d5c) 1;
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.bottomQuadrant {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  max-width: 80%;
+  text-align: center;
+}
+
+.topQuadrant {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  max-width: 80%;
+  text-align: center;
+}
+
+.quadrant.appear { /* Animación */
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.left { /* Alineación */
+  align-self: flex-start;
+}
+
+.right { /* Alineación */
+  align-self: flex-end;
+}
+
+/* Detalles curvos */
+.quadrant::before,
+.quadrant::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #506d5c;
+}
+
+.quadrant::before {
+  top: -2px;
+  left: -2px;
+  border-right: none;
+  border-bottom: none;
+  border-radius: 10px 0 0 0;
+}
+
+.quadrant::after {
+  bottom: -2px;
+  right: -2px;
+  border-left: none;
+  border-top: none;
+  border-radius: 0 0 10px 0;
+}
+
+@media screen and (max-width: 768px) {
+
+}

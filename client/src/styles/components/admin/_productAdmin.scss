@@ -1,0 +1,110 @@
+@use '../../base/variables';
+@use '../../base/mixins';
+
+/* Contenedor principal */
+.product-container {
+  padding: variables.$spacing-medium;
+  background-color: variables.$color-gray-light;
+  border-radius: variables.$border-radius;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* Título */
+.product-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: variables.$spacing-medium;
+  text-align: center;
+  color: variables.$color-gray-dark;
+}
+
+/* Formulario */
+.product-form {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$spacing-small;
+  margin-bottom: variables.$spacing-large;
+
+  .product-input {
+    padding: variables.$spacing-small;
+    border: 1px solid variables.$color-gray-light;
+    border-radius: variables.$border-radius;
+    font-size: variables.$font-size-small;
+  }
+}
+
+/* Botones */
+.product-btn {
+  padding: variables.$spacing-small variables.$spacing-medium;
+  border: none;
+  cursor: pointer;
+  border-radius: variables.$border-radius;
+  font-size: variables.$font-size-small;
+  transition: 0.3s;
+
+  &-submit {
+    background-color: variables.$color-mantis-1;
+    color: variables.$color-white;
+
+    &:hover {
+      background-color: variables.$color-mantis-1;
+      color: variables.$color-white;
+    }
+  }
+
+  &-edit {
+    background-color: variables.$color-mantis-1;
+    color: variables.$color-white;
+
+    &:hover {
+      background-color: darken(variables.$color-mantis-1, 10%);
+    }
+  }
+
+  &-delete {
+    background-color: variables.$color-detail-1;
+    color: variables.$color-white;
+
+    &:hover {
+      background-color: darken(variables.$color-detail-1, 10%);
+    }
+  }
+}
+
+/* Tabla */
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: variables.$color-white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  th,
+  td {
+    padding: variables.$spacing-small;
+    text-align: left;
+    border-bottom: 1px solid variables.$color-gray-light;
+  }
+
+  th {
+    background-color: variables.$color-gray-light;
+    font-weight: bold;
+    color: variables.$color-gray-dark;
+  }
+}
+
+/* Imagen */
+.product-img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: variables.$border-radius;
+}
+
+.product-gallery-item {
+  > img {
+    width: 100px;
+    height: 100px;
+    border-radius: variables.$border-radius;
+  }
+}

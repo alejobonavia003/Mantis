@@ -1,0 +1,184 @@
+@use '../../base/variables';
+@use '../../base/mixins';
+
+
+.sidebar {
+  background-color: variables.$color-gray-dark;
+  color: variables.$color-white;
+  padding: variables.$spacing-medium;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+
+  .sidebarTitle {
+    font-size: 1.5rem;
+    margin-bottom: variables.$spacing-medium;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .sidebarList {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    justify-content: space-around;
+
+    li {
+      padding: variables.$spacing-small;
+      cursor: pointer;
+      margin-bottom: variables.$spacing-small;
+      border-radius: variables.$border-radius;
+      transition: background-color 0.3s;
+      font-size: variables.$font-size-small;
+
+      &:hover {
+        background-color: variables.$color-primary-alt;
+      }
+
+      &.active {
+        background-color: variables.$color-secondary;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+
+.logoutButton {
+  position: fixed;
+  top: variables.$spacing-medium;
+  right: variables.$spacing-medium;
+  padding: variables.$spacing-small variables.$spacing-medium;
+  background-color: variables.$color-detail-1;
+  color: variables.$color-white;
+  border: none;
+  border-radius: variables.$border-radius;
+  cursor: pointer;
+  font-size: variables.$font-size-small;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: darken(variables.$color-detail-1, 10%);
+  }
+}
+
+.adminTitle {
+  font-size: 2rem;
+  margin-bottom: variables.$spacing-medium;
+  color: variables.$color-gray-dark;
+  text-align: center;
+}
+
+.selectedImagePreview {
+  margin-top: variables.$spacing-medium;
+  text-align: center;
+
+  h3 {
+    font-size: 1.5rem;
+    color: variables.$color-gray-dark;
+    margin-bottom: variables.$spacing-small;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: variables.$border-radius;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$spacing-small;
+  margin-bottom: variables.$spacing-medium;
+
+  .admin-input {
+    padding: variables.$spacing-small;
+    border: 1px solid variables.$color-gray-light;
+    border-radius: variables.$border-radius;
+    font-size: variables.$font-size-small;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .admin-btn {
+    padding: variables.$spacing-small variables.$spacing-medium;
+    border: none;
+    border-radius: variables.$border-radius;
+    cursor: pointer;
+    font-size: variables.$font-size-small;
+    transition: background-color 0.3s;
+
+    &-submit {
+      background-color: variables.$color-secondary;
+      color: variables.$color-white;
+
+      &:hover {
+        background-color: darken(variables.$color-secondary, 10%);
+      }
+    }
+
+    &-edit {
+      background-color: variables.$color-primary-alt;
+      color: variables.$color-white;
+
+      &:hover {
+        background-color: darken(variables.$color-primary-alt, 10%);
+      }
+    }
+
+    &-delete {
+      background-color: variables.$color-detail-1;
+      color: variables.$color-white;
+
+      &:hover {
+        background-color: darken(variables.$color-detail-1, 10%);
+      }
+    }
+  }
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: variables.$spacing-medium;
+
+  th,
+  td {
+    padding: variables.$spacing-small;
+    text-align: left;
+    border-bottom: 1px solid variables.$color-gray-light;
+  }
+
+  th {
+    background-color: variables.$color-gray-light;
+    font-weight: bold;
+    color: variables.$color-gray-dark;
+  }
+
+  tr:hover {
+    background-color: variables.$color-gray-light;
+  }
+
+  .admin-img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: variables.$border-radius;
+  }
+}
+
+.loadingMessage,
+.errorMessage {
+  text-align: center;
+  font-size: variables.$font-size-small;
+  margin-top: variables.$spacing-medium;
+
+  &.loadingMessage {
+    color: variables.$color-gray-dark;
+  }
+
+  &.errorMessage {
+    color: variables.$color-detail-1;
+  }
+}

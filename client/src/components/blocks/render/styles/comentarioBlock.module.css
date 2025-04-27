@@ -1,0 +1,156 @@
+/* styles/comentarioBlock.module.css */
+.containerGeneral
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+.comentariosContainer {
+  background-color: #F7EFCB;
+  border-radius: 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+}
+
+.title {
+  font-size: 3rem;
+  color: #516f61;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #618E7E;
+  margin-bottom: 20px;
+}
+
+.carouselContainer {
+  border: 1px solid #516f61;
+  border-radius: 8px;
+  margin-top: 20px;
+  background-color: #dfd8c7;
+  position: relative;
+
+}
+
+.googleBadge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  z-index: 99;
+}
+
+.carousel {
+  overflow: hidden;
+  position: relative;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.reviewCard {
+  background-color: #E8D3B3;
+  padding: 20px;
+  border-radius: 8px;
+  flex: 0 0 100%;
+  margin: 0 auto;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: inherit;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.profilePhoto {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.author {
+  font-size: 18px;
+  color: #516f61;
+  margin: 10px 0;
+}
+
+.rating {
+  font-size: 18px;
+  color: #9dcdbb;
+  margin: 10px 0;
+}
+
+.text {
+  font-size: 20px;
+  color: #618E7E;
+  line-height: 1.4;
+}
+
+.prevButton,
+.nextButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #dfd8c7;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.prevButton { left: 15px; }
+.nextButton { right: 15px; }
+
+.dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #cccccc;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.activeDot {
+  background: #516f61;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.noReviews {
+  color: #618E7E;
+  font-size: 16px;
+  padding: 20px;
+}

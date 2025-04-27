@@ -1,0 +1,117 @@
+@use '../base/variables';
+@use '../base/mixins';
+
+// Contenedor principal
+.ps-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: variables.$spacing-large;
+
+  .ps-title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: variables.$spacing-large;
+    color: variables.$color-detail-2;
+  }
+
+  .ps-list {
+    margin-top: variables.$spacing-large;
+
+    h3 {
+      font-size: 1.5rem;
+      color: variables.$color-gray-dark;
+      margin-bottom: variables.$spacing-medium;
+    }
+
+    .ps-card {
+      background: variables.$color-white;
+      border: 1px solid variables.$color-gray-light;
+      border-radius: variables.$border-radius;
+      padding: variables.$spacing-medium;
+      margin-bottom: variables.$spacing-medium;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+      .ps-card-header {
+        display: flex;
+        align-items: center;
+        gap: variables.$spacing-medium;
+        margin-bottom: variables.$spacing-small;
+
+        img {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 1px solid variables.$color-gray-light;
+        }
+
+        div {
+          h4 {
+            font-size: variables.$font-size-small;
+            color: variables.$color-gray-dark;
+            margin-bottom: variables.$spacing-mini;
+          }
+
+          p {
+            font-size: variables.$font-size-xsmall;
+            color: variables.$color-gray-light;
+          }
+        }
+      }
+
+      .actions {
+        display: flex;
+        gap: variables.$spacing-small;
+        margin-top: variables.$spacing-small;
+
+        .edit-button {
+          padding: variables.$spacing-small variables.$spacing-medium;
+          background-color: variables.$color-mantis-1;
+          color: variables.$color-white;
+          border: none;
+          border-radius: variables.$border-radius;
+          cursor: pointer;
+          font-size: variables.$font-size-small;
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            background-color: darken(variables.$color-primary-alt, 10%);
+          }
+        }
+
+        .delete-button {
+          padding: variables.$spacing-small variables.$spacing-medium;
+          background-color: variables.$color-detail-1;
+          color: variables.$color-white;
+          border: none;
+          border-radius: variables.$border-radius;
+          cursor: pointer;
+          font-size: variables.$font-size-small;
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            background-color: darken(variables.$color-detail-1, 10%);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Mensajes de carga y error
+.loading,
+.error {
+  text-align: center;
+  padding: variables.$spacing-large;
+  font-size: variables.$font-size-small;
+}
+
+// Sin psicólogos registrados
+.no-psychologists {
+  text-align: center;
+  font-size: variables.$font-size-small;
+  color: variables.$color-gray-dark;
+  font-style: italic;
+  margin-top: variables.$spacing-large;
+}

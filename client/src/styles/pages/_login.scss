@@ -1,0 +1,93 @@
+@use '../base/variables';
+@use '../base/mixins';
+
+
+.loginContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: variables.$min-height-full;
+
+    padding: variables.$spacing-medium;
+  
+    @include mixins.tablet() {
+      padding: variables.$spacing-small;
+    }
+  }
+  
+  .loginForm {
+    background: variables.$color-white;
+    padding: variables.$spacing-large;
+    border-radius: variables.$border-radius;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  
+    @include mixins.tablet() {
+      padding: variables.$spacing-medium;
+    }
+  }
+  
+  .title {
+    color: variables.$color-gray-dark;
+    text-align: center;
+    margin-bottom: variables.$spacing-large;
+    font-size: 1.5rem;
+  
+    @include mixins.movil() {
+      font-size: variables.$font-size-small;
+    }
+  }
+  
+  .inputGroup {
+    margin-bottom: variables.$spacing-large;
+  
+    label {
+      display: block;
+      margin-bottom: variables.$spacing-small;
+      color: variables.$color-gray-dark;
+      font-weight: 500;
+    }
+  
+    .input {
+      width: 100%;
+      padding: variables.$spacing-small;
+      border: 2px solid variables.$color-gray-light;
+      border-radius: variables.$border-radius;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+  
+      &:focus {
+        outline: none;
+        border-color: variables.$color-mantis-1;
+      }
+    }
+  }
+  
+  .button {
+    width: 100%;
+    padding: variables.$spacing-medium;
+    background-color: variables.$color-forest;
+    color: variables.$color-white;
+    border: none;
+    border-radius: variables.$border-radius;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+      background-color: variables.$color-deep-grass-green;
+    }
+  
+    &:disabled {
+      background-color: variables.$color-gray-light;
+      cursor: not-allowed;
+    }
+  }
+  
+  .error {
+    color: variables.$color-detail-1;
+    text-align: center;
+    margin: variables.$spacing-medium 0;
+    font-size: variables.$font-size-small;
+  }

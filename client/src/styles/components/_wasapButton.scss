@@ -1,0 +1,117 @@
+@use '../base/variables';
+@use '../base/mixins';
+
+// Botón de WhatsApp fijo
+.whatsappButton {
+  position: fixed;
+  bottom: variables.$spacing-medium; // Ajustar el espaciado inferior
+  right: variables.$spacing-medium; // Ajustar el espaciado derecho
+  background-color: variables.$color-secondary; // Usar color secundario
+  border-radius: 50%;
+  padding: variables.$spacing-small;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 999;
+  transition: none !important;
+  display: block !important;
+  opacity: 1 !important;
+
+  &:hover {
+    background-color: variables.$color-mantis-1; // Usar color para detalles
+  }
+}
+
+.whatsappIcon {
+  width: 40px;
+  height: 40px;
+}
+
+// Media Queries para móviles (450px o menos)
+@include mixins.tablet() {
+  .whatsappButton {
+    bottom: variables.$spacing-small; // Reducir el espaciado inferior en móviles
+    right: variables.$spacing-small; // Reducir el espaciado derecho en móviles
+    padding: variables.$spacing-mini; // Reducir el padding en móviles
+  }
+
+
+}
+
+// Modal
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background-color: variables.$color-primary; // Fondo del modal
+  border-radius: variables.$border-radius; // Usar variable para bordes redondeados
+  width: 90%;
+  max-width: 400px;
+  padding: variables.$spacing-medium;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+// Campos del formulario
+.field {
+  margin-bottom: variables.$spacing-medium;
+
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: variables.$spacing-small;
+  }
+
+  select,
+  textarea {
+    max-width: 100%;
+    width: 100%;
+    border: 1px solid variables.$color-gray-light;
+    border-radius: variables.$border-radius;
+    padding: variables.$spacing-small;
+    font-size: variables.$font-size-small;
+  }
+}
+
+// Botones
+.buttonGroup {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sendButton {
+  background-color: variables.$color-secondary; // Usar color secundario
+  color: variables.$color-white;
+  border: none;
+  border-radius: variables.$border-radius;
+  padding: variables.$spacing-small variables.$spacing-medium;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: variables.$color-mantis-1; // Usar color para detalles
+  }
+}
+
+.cancelButton {
+  background-color: variables.$color-gray-light;
+  color: variables.$color-gray-dark;
+  border: none;
+  border-radius: variables.$border-radius;
+  padding: variables.$spacing-small variables.$spacing-medium;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: variables.$color-mantis-1;
+  }
+}

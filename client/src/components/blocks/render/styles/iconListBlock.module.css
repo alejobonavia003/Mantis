@@ -1,0 +1,139 @@
+/* Contenedor general */
+.iconListContainer {
+  
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.titleBlock {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.listTitle {
+  font-size: 3rem;
+  color: #000;
+  max-width: 800px;
+}
+
+.contenedordeltitulo {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Botones, subtítulo, etc. (igual que antes) */
+.buttonContainer {
+  margin-top: 30px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.heroButton {
+  color: #dfd8c7;
+  padding: 12px 30px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.contenedordelsubtitulo {
+  font-size: 1.2rem;
+  color: #666;
+  text-align: center;
+}
+
+/* ---- Disposición tipo "manchas" ---- */
+.stainGrid {
+  display: flex;
+  flex-wrap: wrap; /* Los elementos bajan en filas */
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 1rem;       /* Espacio entre manchas */
+}
+
+/* Cada li es un contenedor relativo con fondo (imagen) y el contenido centrado */
+.stainItem {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  background-size: cover; /* Puedes probar con cover para que la imagen se ajuste bien */
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  
+}
+
+
+
+/* Contenido centrado en la mancha */
+.stainContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;           /* para dejar un margen interno */
+  padding: 0.5rem;
+  text-align: center;   /* para centrar el texto */
+  box-sizing: border-box;
+}
+
+
+.itemText > p {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  overflow: hidden;
+}
+
+/* Placeholder para mantener la estructura en responsive */
+.stainPlaceholder {
+  width: 160px;
+  height: 160px;
+}
+
+
+/* ---- Responsivo ---- */
+@media (max-width: 768px) {
+  .stainPlaceholder {
+    width: 120px;
+    height: 120px;
+  }
+
+  .stainItem {
+    width: 140px;
+    height: 140px;
+  }
+  .itemText > p {
+    font-size: 0.9rem;
+  }
+  .iconListContainer {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .stainPlaceholder {
+    width: 100px;
+    height: 100px;
+  }
+
+  .stainItem {
+    width: 120px;
+    height: 120px;
+  }
+
+  .itemText > p{
+    font-size: 0.8rem;
+  }
+  .stainContent {
+    top: 60%;
+  }
+
+}
