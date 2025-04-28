@@ -16,11 +16,11 @@ import SingleProduct from "./pages/SingleProduct";
 import './styles/style.css'
 
 function App() {
-
+  const apiUrl = import.meta.env.VITE_API_URL;
   useEffect(() => {
     const registerVisit = async () => {
       try {
-        await axios.post('/api/metrics/visit');
+        await axios.post(`${apiUrl}api/metrics/visit`);
       } catch (error) {
         console.error('Error registering visit:', error);
       }
@@ -29,7 +29,7 @@ function App() {
     registerVisit();
   }, []);
 
-  
+
   return (
     <Router>
       <Header />

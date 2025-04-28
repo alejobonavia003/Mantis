@@ -58,7 +58,7 @@ const TurnosBlock = ({ configuration }) => {
         setShowSuccessModal(true); // Mostrar el modal de éxito
 
         // Registrar la solicitud de sesión en las métricas
-        await axios.post('/api/metrics/request', {
+        await axios.post(`${apiUrl}api/metrics/request`, {
           description: `Solicitud de sesión de ${formData.nombre} ${formData.apellidos}`,
         });
       } else {

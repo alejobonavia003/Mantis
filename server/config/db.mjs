@@ -16,6 +16,15 @@ const sequelize = new Sequelize(DB_URL, {
   logging: false, // Opcional: desactivar logs SQL en consola
 });
 
+sequelize.authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });
+
+
 
 const connectDB = async () => {
   try {

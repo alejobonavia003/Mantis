@@ -46,12 +46,21 @@ const MetricsPanel = () => {
     }));
   };
 
+
+  const visitCounts = metrics.visits && metrics.visits.length > 0
+  ? metrics.visits.reduce((acc, visit) => {
+      const date = new Date(visit.createdAt).toLocaleDateString();
+      acc[date] = (acc[date] || 0) + 1;
+      return acc;
+    }, {})
+  : {};
+
   const visitsData = {
-    labels: metrics.visits ? metrics.visits.map((visit) => visit.date) : [],
+    labels: Object.keys(visitCounts),
     datasets: [
       {
         label: 'Visitas',
-        data: metrics.visits ? metrics.visits.map((visit) => visit.count) : [],
+        data: Object.values(visitCounts),
         fill: false,
         backgroundColor: '#516f61',
         borderColor: '#516f61',

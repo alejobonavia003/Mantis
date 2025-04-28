@@ -36,7 +36,7 @@ app.use(cors(corsOptions));
 app.use(express.static(path.join(__dirname, "/dist")));
 app.use(express.static(path.join(__dirname, "/src")));
 app.use(express.static(path.join(__dirname, "/assets")));
-app.use('/api', metricsRoutes);
+
 //app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
 
@@ -56,7 +56,7 @@ app.use('/api/productos', productsRoutes);
 app.use('/api/blocks', blockRoutes);  
 app.use('/api/psychologists', psychologistRoutes);
 app.use('/api/reviews', ComentariosRoutes);
-app.use('/api', metricsRoutes);
+app.use('/api/metrics', metricsRoutes);
 
 
 // Ruta catch-all para React Router
