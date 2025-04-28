@@ -2050,6 +2050,13 @@ body {
   font-size: 1.6rem;
   margin-bottom: 16px;
 }
+.metrics-panel__row--read {
+  opacity: 0.6;
+  background-color: #f5f5f5;
+}
+.metrics-panel__mark-as-read-btn:disabled {
+  display: none;
+}
 .metrics-panel__subtitle {
   font-size: 1.4rem;
   margin-top: 16px;

@@ -46,9 +46,9 @@ export const getMetrics = async (req, res) => {
   try {
    // console.log('Getting metrics');
     const visits = await Visit.findAll();
-    const requests = await Request.findAll();
-    const orders = await Order.findAll();
-    res.status(200).json({ visits, requests, orders });
+    const request = await Request.findAll();
+    const order = await Order.findAll();
+    res.status(200).json({ visits, request, order });
   } catch (error) {
     console.error('Error getting metrics:', error);
     res.status(500).json({ message: 'Error al obtener las métricas' });
@@ -56,28 +56,34 @@ export const getMetrics = async (req, res) => {
 };
 
 
-export const markRequestAsRead = async (req, res) => {
+async function markRequestAsRead(req, res) {
   try {
-   // console.log('Marking request as read:', req.params.id);
-    const request = await Request.findById(req.params.id);
-    request.read = true;
-    await request.save();
-    res.status(200).json({ message: 'Solicitud marcada como leída' });
+      const id = req.params.id;
+      const request = await Request.findByPk(id);  // Buscar por clave primaria
+      if (!request) {
+          return res.status(404).json({ message: 'Solicitud no encontrada' });
+      }
+      request.read = true;      // Marcar como leído
+      await request.save();     // Guardar cambios en la base de datos
+      return res.json({ message: 'Solicitud marcada como leída correctamente' });
   } catch (error) {
-    console.error('Error marking request as read:', error);
-    res.status(500).json({ message: 'Error al marcar la solicitud como leída' });
+      return res.status(500).json({ error: error.message });
   }
-};
+}
 
-export const markOrderAsRead = async (req, res) => {
+// Controlador para marcar una orden como leída
+async function markOrderAsRead(req, res) {
   try {
-   // console.log('Marking order as read:', req.params.id);
-    const order = await Order.findById(req.params.id);
-    order.read = true;
-    await order.save();
-    res.status(200).json({ message: 'Pedido marcado como leído' });
+      const id = req.params.id;
+      const order = await Order.findByPk(id);  // Buscar por clave primaria
+      if (!order) {
+          return res.status(404).json({ message: 'Orden no encontrada' });
+      }
+      order.read = true;       // Marcar como leído
+      await order.save();      // Guardar cambios en la base de datos
+      return res.json({ message: 'Orden marcada como leída correctamente' });
   } catch (error) {
-    console.error('Error marking order as read:', error);
-    res.status(500).json({ message: 'Error al marcar el pedido como leído' });
+      return res.status(500).json({ error: error.message });
   }
-};
+}
+export { markRequestAsRead, markOrderAsRead };

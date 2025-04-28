@@ -59,6 +59,7 @@ app.use('/api/reviews', ComentariosRoutes);
 app.use('/api/metrics', metricsRoutes);
 
 
+
 // Ruta catch-all para React Router
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));

@@ -25,11 +25,14 @@ ChartJS.register(
 );
 
 const MetricsPanel = () => {
-  const [metrics, setMetrics] = useState({ visits: [], requests: [], orders: [] });
+ 
+  const [metrics, setMetrics] = useState({ visits: [], request: [], order: [] });
 
   useEffect(() => {
     const fetchMetrics = async () => {
       const response = await axios.get('/api/metrics');
+      //console.log('Datos recibidos del backend:', response.data);
+      //console.log(response.data);
       setMetrics(response.data);
     };
 
@@ -37,20 +40,34 @@ const MetricsPanel = () => {
   }, []);
 
   const markAsRead = async (type, id) => {
-    await axios.post(`/api/${type}/${id}/read`);
-    setMetrics((prevMetrics) => ({
-      ...prevMetrics,
-      [type]: prevMetrics[type].map((item) =>
-        item.id === id ? { ...item, read: true } : item
-      ),
-    }));
+    try {
+      await axios.post(`/api/metrics/${type}/${id}/read`);
+
+      setMetrics((prevMetrics) => {
+        if (!prevMetrics[type]) {
+          console.error(`Tipo inválido: ${type}`);
+          //console.log('Estado actual de metrics:', prevMetrics);
+          return prevMetrics; // Retorna el estado anterior si el tipo no es válido
+        }
+
+        return {
+          ...prevMetrics,
+          [type]: prevMetrics[type].map((item) =>
+            item.id === id ? { ...item, read: true } : item
+          ),
+        };
+      });
+    } catch (error) {
+      console.error(`Error al marcar como leído: ${error}`);
+    }
   };
+  
 
 
   const visitCounts = metrics.visits && metrics.visits.length > 0
   ? metrics.visits.reduce((acc, visit) => {
-      const date = new Date(visit.createdAt).toLocaleDateString();
-      acc[date] = (acc[date] || 0) + 1;
+      const date = new Date(visit.date).toLocaleDateString(); // <--- USAR visit.date, NO createdAt
+      acc[date] = (acc[date] || 0) + visit.count; // <--- usar visit.count
       return acc;
     }, {})
   : {};
@@ -82,17 +99,24 @@ const MetricsPanel = () => {
             </tr>
           </thead>
           <tbody>
-            {metrics.requests ? metrics.requests.map((request) => (
-              <tr key={request.id}>
-                <td>{request.id}</td>
-                <td>{request.description}</td>
-                <td>{request.read ? 'Sí' : 'No'}</td>
-                <td>
-                  <button className="metrics-panel__mark-as-read-btn" onClick={() => markAsRead('requests', request.id)}>Marcar como leído</button>
-                </td>
-              </tr>
-            )) : null}
-          </tbody>
+  {metrics.request ? metrics.request.map((request) => (
+    <tr key={request.id} className={request.read ? 'metrics-panel__row--read' : ''}>
+      <td>{request.id}</td>
+      <td>{request.description}</td>
+      <td>{request.read ? 'Sí' : 'No'}</td>
+      <td>
+        {!request.read && (
+          <button
+            className="metrics-panel__mark-as-read-btn"
+            onClick={() => markAsRead('request', request.id)}
+          >
+            Marcar como leído
+          </button>
+        )}
+      </td>
+    </tr>
+  )) : null}
+</tbody>
         </table>
       </div>
       <div>
@@ -107,17 +131,24 @@ const MetricsPanel = () => {
             </tr>
           </thead>
           <tbody>
-            {metrics.orders ? metrics.orders.map((order) => (
-              <tr key={order.id}>
-                <td>{order.id}</td>
-                <td>{order.description}</td>
-                <td>{order.read ? 'Sí' : 'No'}</td>
-                <td>
-                  <button className="metrics-panel__mark-as-read-btn" onClick={() => markAsRead('orders', order.id)}>Marcar como leído</button>
-                </td>
-              </tr>
-            )) : null}
-          </tbody>
+  {metrics.order ? metrics.order.map((order) => (
+    <tr key={order.id} className={order.read ? 'metrics-panel__row--read' : ''}>
+      <td>{order.id}</td>
+      <td>{order.description}</td>
+      <td>{order.read ? 'Sí' : 'No'}</td>
+      <td>
+        {!order.read && (
+          <button
+            className="metrics-panel__mark-as-read-btn"
+            onClick={() => markAsRead('order', order.id)}
+          >
+            Marcar como leído
+          </button>
+        )}
+      </td>
+    </tr>
+  )) : null}
+</tbody>
         </table>
       </div>
       <div>
@@ -125,7 +156,11 @@ const MetricsPanel = () => {
         <div className="metrics-panel__chart-container">
           <Line data={visitsData} />
         </div>
-        <p className="metrics-panel__total-visits">Total de Visitas: {metrics.visits ? metrics.visits.reduce((acc, visit) => acc + visit.count, 0) : 0}</p>
+        <p className="metrics-panel__total-visits">
+  Total de Visitas: {metrics.visits && metrics.visits.length > 0
+    ? metrics.visits.reduce((acc, visit) => acc + visit.count, 0)
+    : 0}
+</p>
       </div>
     </div>
   );
