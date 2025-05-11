@@ -52,6 +52,7 @@ const MaterialRequestBlock = ({ configuration }) => {
         // Registrar la solicitud de materiales en las métricas
         await axios.post('/api/metrics/order', {
           description: `Solicitud de material de ${formData.nombre} ${formData.apellido}`,
+          material: formData.material || '',
         });
       } else {
         alert("Error al enviar el formulario. Inténtalo de nuevo.");

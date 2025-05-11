@@ -60,6 +60,7 @@ const TurnosBlock = ({ configuration }) => {
         // Registrar la solicitud de sesión en las métricas
         await axios.post(`${apiUrl}api/metrics/request`, {
           description: `Solicitud de sesión de ${formData.nombre} ${formData.apellidos}`,
+          psychologist: formData.tipoSesion || '',
         });
       } else {
         alert("Error al enviar el formulario. Inténtalo de nuevo.");
