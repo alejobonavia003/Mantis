@@ -94,6 +94,7 @@ const MetricsPanel = () => {
             <tr>
               <th>ID</th>
               <th>Descripción</th>
+              <th>Solicitado a</th>
               <th>Leído</th>
               <th>Acciones</th>
             </tr>
@@ -103,6 +104,7 @@ const MetricsPanel = () => {
     <tr key={request.id} className={request.read ? 'metrics-panel__row--read' : ''}>
       <td>{request.id}</td>
       <td>{request.description}</td>
+      <td>{request.psychologist || '-'}</td>
       <td>{request.read ? 'Sí' : 'No'}</td>
       <td>
         {!request.read && (
@@ -126,6 +128,7 @@ const MetricsPanel = () => {
             <tr>
               <th>ID</th>
               <th>Descripción</th>
+              <th>Material</th>
               <th>Leído</th>
               <th>Acciones</th>
             </tr>
@@ -135,6 +138,7 @@ const MetricsPanel = () => {
     <tr key={order.id} className={order.read ? 'metrics-panel__row--read' : ''}>
       <td>{order.id}</td>
       <td>{order.description}</td>
+      <td>{order.material || '-'}</td>
       <td>{order.read ? 'Sí' : 'No'}</td>
       <td>
         {!order.read && (

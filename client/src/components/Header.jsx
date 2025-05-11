@@ -217,12 +217,12 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link to="/hacer-pedido" onClick={() => setMenuOpen(false)}>
+              <Link to="/cuadernillos#formulario-materiales" onClick={() => setMenuOpen(false)}>
                 Hacer el Pedido
               </Link>
             </li>
             <li>
-              <Link to="/solicitar-sesion" onClick={() => setMenuOpen(false)}>
+              <Link to="/turnos#formulario-de-turnos" onClick={() => setMenuOpen(false)}>
                 Solicitar una Sesión
               </Link>
             </li>
