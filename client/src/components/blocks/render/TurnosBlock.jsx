@@ -108,7 +108,10 @@ const TurnosBlock = ({ configuration }) => {
               />
             </div>
             <div>
-              <p>Edad</p>
+              <p>
+                Edad <span className="required">*</span> <p style={{ fontSize: '15px', display: 'inline' }}>(atención a personas mayores de 18 años)</p>
+ 
+                </p>
               <input
                 className="input"
                 type="number"
@@ -198,7 +201,7 @@ const TurnosBlock = ({ configuration }) => {
                 onChange={handleChange}
                 required
               />{" "}
-              Conocido
+              Recomendación
             </label>
             <label>
               <input

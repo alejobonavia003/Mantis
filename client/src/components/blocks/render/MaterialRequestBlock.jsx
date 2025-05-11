@@ -77,7 +77,7 @@ const MaterialRequestBlock = ({ configuration }) => {
         <form onSubmit={handleSubmit} className="form-terapia">
           <div className="grid-terapia">
             <div>
-              <p>Nombre</p>
+              <p>Nombre <span className="required">*</span></p>
               <input
                 className="input"
                 type="text"
@@ -99,7 +99,7 @@ const MaterialRequestBlock = ({ configuration }) => {
               />
             </div>
             <div>
-              <p>Teléfono</p>
+              <p>Teléfono <span className="required">*</span></p>
               <input
                 className="input"
                 type="text"
@@ -110,7 +110,7 @@ const MaterialRequestBlock = ({ configuration }) => {
               />
             </div>
             <div>
-              <p>Correo Electrónico</p>
+              <p>Correo Electrónico <span className="required">*</span></p>
               <input
                 className="input"
                 type="email"
@@ -121,7 +121,7 @@ const MaterialRequestBlock = ({ configuration }) => {
               />
             </div>
             <div>
-              <p>Material de auto-ayuda</p>
+              <p>Material de auto-ayuda <span className="required">*</span></p>
               <select
                 className="input"
                 name="material"
@@ -137,7 +137,7 @@ const MaterialRequestBlock = ({ configuration }) => {
           </div>
 
           <div className="options">
-            <p>¿Dónde nos conociste?</p>
+            <p>¿Dónde nos conociste? <span className="required">*</span></p>
             <label>
               <input
                 type="radio"
@@ -189,7 +189,7 @@ const MaterialRequestBlock = ({ configuration }) => {
               required
             />{" "}
             <span>
-              Estoy de acuerdo con la política de privacidad
+              Estoy de acuerdo con la política de privacidad <span className="required">*</span>
             </span>
           </div>
 

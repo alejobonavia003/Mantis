@@ -28,9 +28,15 @@ const RoldelTerapeutaBlock = ({ configuration }) => {
         {descripcion && (
           <p
             className={styles.roldescription}
-            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(descripcion) }}
-          />
+            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(descripcion) }}>
+          </p>
         )}
+<p>
+  A continuación te compartimos algunas pautas sobre lo que <a></a>
+  <span className={styles.debe}>debe</span> y <a></a>
+  <span className={styles.nodebe}>no debe</span> hacer un terapeuta durante su acompañamiento.
+</p>
+
       </div>
 
       {/* Contenedor de prácticas */}

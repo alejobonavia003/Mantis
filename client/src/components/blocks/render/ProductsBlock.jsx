@@ -125,7 +125,7 @@ const ProductsPromotionBlock = ({ configuration }) => {
           ))}
         </div>
 
-        {/* Botón principal (Ver tienda, etc.) */}
+        {/* Botón principal HACER EL PEDIDO */}
         {configuration?.mainButtonText && (
           <div className={styles.mainButtonContainer}>
 

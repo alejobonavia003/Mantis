@@ -1,14 +1,18 @@
+// SingleProduct.jsx
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import DOMPurify from 'dompurify';
-import MaterialRequestBlock from '../components/blocks/render/MaterialRequestBlock'; // Importa el formulario
+import { ShoppingCart } from 'lucide-react';
+import MaterialRequestBlock from '../components/blocks/render/MaterialRequestBlock';
 
 function SingleProduct() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
-  const [showForm, setShowForm] = useState(false); // Estado para mostrar el formulario
-  const [selectedImage, setSelectedImage] = useState(null); // Estado para la imagen seleccionada
+  const [showForm, setShowForm] = useState(false);
+  const [showpedido, setShowpedido] = useState(false);
+  const [currentImage, setCurrentImage] = useState(null);
+  const [zoomed, setZoomed] = useState(false);
   const apiUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
@@ -16,6 +20,8 @@ function SingleProduct() {
       try {
         const response = await axios.get(`${apiUrl}api/productos/${id}`);
         setProduct(response.data);
+        const firstImage = response.data.galeria_imagenes?.[0] || '/img/placeholder.png';
+        setCurrentImage(firstImage);
       } catch (error) {
         console.error('Error al obtener el producto:', error);
       }
@@ -23,95 +29,90 @@ function SingleProduct() {
     fetchProduct();
   }, [id, apiUrl]);
 
-  if (!product) {
-    return <div className="loading">Cargando producto...</div>;
-  }
+  if (!product) return <div className="loading">Cargando producto...</div>;
 
-  const { galeria_imagenes } = product;
-  const portada = galeria_imagenes && galeria_imagenes.length > 0 ? galeria_imagenes[0] : '/img/placeholder.png';
-  const otrasImagenes = galeria_imagenes && galeria_imagenes.length > 1 ? galeria_imagenes.slice(1) : [];
+  const { galeria_imagenes = [] } = product;
+
+  const openModal = () => setShowForm(false) || setZoomed(false) || setShowForm(true);
+  const closeModal = () => { setShowForm(false); setZoomed(false); };
+  const portada = galeria_imagenes?.[0] || '/img/placeholder.png';
 
   return (
     <div className="totalContainer">
       <div className="singleProductContainer">
-        {/* Portada e información del producto */}
+        {/* Encabezado */}
         <div className="productHeader">
-          {/* Imagen de portada */}
-          <div className="portada">
-            <img src={portada} alt={product.nombre} className="portadaImage" />
+          <div className="portada gallery">
+            <div className="mainImage" onClick={() => setShowForm(true)}>
+              <img
+                src={currentImage}
+                alt={product.nombre}
+                className={zoomed ? 'zoomed' : ''}
+                onClick={() => setZoomed(z => !z)}
+              />
+            </div>
+            <div className="thumbnails">
+              {galeria_imagenes.map((url, i) => (
+                <img
+                  key={i}
+                  src={url}
+                  alt={`Thumb ${i}`}
+                  className={url === currentImage ? 'thumbnailActive' : 'thumbnail'}
+                  onClick={() => setCurrentImage(url)}
+                />
+              ))}
+            </div>
           </div>
-
-          {/* Título y descripción corta */}
           <div className="productInfo">
             <h1 className="title">{DOMPurify.sanitize(product.nombre)}</h1>
             <div
               className="shortDescription"
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(product.descripcion_corta || ''),
-              }}
+              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(product.descripcion_corta) }}
             />
           </div>
         </div>
 
-        {/* Precio */}
-        <div className="productPrice">
-          <p className="price">€{product.precio}</p>
+        {/* Precio destacado */}
+        <div className="productPrice highlightedPrice">
+          <ShoppingCart className="icon" />
+          <span>Inversión: €{product.precio}</span>
         </div>
 
-        {/* Otras imágenes */}
-        {otrasImagenes.length > 0 && (
-          <div className="otherImages">
-            {otrasImagenes.map((imgUrl, idx) => (
-              <img
-                key={idx}
-                src={imgUrl}
-                alt={`Imagen ${idx + 2}`}
-                className="otherImage"
-                onClick={() => setSelectedImage(imgUrl)} // Al hacer clic, se selecciona la imagen
-              />
-            ))}
-          </div>
-        )}
-
-        {/* Botón para hacer el pedido */}
+        {/* Botón de pedido */}
         <div className="orderButtonContainer">
-          <button className="orderButton" onClick={() => setShowForm(true)}>
-            Hacer el Pedido
+          <button className="orderButton" onClick={() => setShowpedido(true)}>
+            <ShoppingCart className="icon" /> Hacer el Pedido
           </button>
         </div>
 
-        {/* Formulario de solicitud de material */}
+        {/* imagenes */}
         {showForm && (
-          <MaterialRequestBlock
-            configuration={{
-              backgroundColor: '#f9f9f9',
-              sideImage: portada,
-            }}
-          />
+          <div className="imageModalProduct" onClick={closeModal}>
+            <div className="modalContentProduct">
+              <img src={currentImage} alt="Imagen ampliada" className={zoomed ? 'zoomed' : ''} />
+            </div>    
+          </div>
         )}
+              {/* Formulario */}
+              {showpedido && (
+        <MaterialRequestBlock
+          configuration={{ backgroundColor: '#f9f9f9', sideImage: portada }}
+        />
+      )}
 
-        {/* Descripción larga */}
+        {/* Sección detalles */}
         <div className="detailsSection">
           <div
-            className="longDescription"
-            dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(product.descripcion_larga || ''),
-            }}
+            className="longDescription highlightedDescription"
+            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(product.descripcion_larga) }}
           />
         </div>
-        <p className="digitalProductNotice">
+
+        {/* Aviso digital */}
+        <p className="digitalProductNotice highlightedNotice">
           Este es un producto digital, se envía en formato .pdf
         </p>
       </div>
-
-      {/* Modal para la imagen seleccionada */}
-      {selectedImage && (
-        <div className="imageModalProduct" onClick={() => setSelectedImage(null)}>
-          <div className="modalContentProduct">
-            <img src={selectedImage} alt="Imagen ampliada" />
-          </div>
-        </div>
-      )}
     </div>
   );
 }
