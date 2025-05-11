@@ -11,6 +11,10 @@ const Request = sequelize.define('Request', {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  psychologist: { // NUEVO
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
   read: {
     type: DataTypes.BOOLEAN,
     defaultValue: false,

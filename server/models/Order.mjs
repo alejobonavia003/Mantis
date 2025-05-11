@@ -11,6 +11,10 @@ const Order = sequelize.define('Order', {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  material: { // NUEVO
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
   read: {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
