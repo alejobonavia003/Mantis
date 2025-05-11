@@ -35,6 +35,18 @@ router.get('/:slug', async (req, res) => {
   }
 });
 
+// GET: Obtener un psicólogo por id
+router.get('/id/:id', async (req, res) => {
+  try {
+    const psychologist = await Psychologist.findByPk(req.params.id);
+    
+    if (!psychologist) return res.status(404).json({ error: 'Psicólogo no encontrado' });
+    res.json(psychologist);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 // POST: Crear nuevo psicólogo (protegido)
 router.post('/', authenticate, async (req, res) => {
   const transaction = await sequelize.transaction();

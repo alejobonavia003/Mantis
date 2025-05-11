@@ -12,7 +12,10 @@ import blockRoutes from './routes/blockRoutes.mjs';
 import psychologistRoutes from './routes/psychologistRoutes.mjs';
 import ComentariosRoutes from './routes/comentariosRoute.mjs';
 import metricsRoutes from './routes/metricsRoutes.mjs';
+import reviewRoutes from './routes/reviewRoutes.mjs';
 import { connectDB, syncDB } from './config/db.mjs';
+
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -57,7 +60,7 @@ app.use('/api/blocks', blockRoutes);
 app.use('/api/psychologists', psychologistRoutes);
 app.use('/api/reviews', ComentariosRoutes);
 app.use('/api/metrics', metricsRoutes);
-
+app.use('/api', reviewRoutes);
 
 
 // Ruta catch-all para React Router
@@ -76,5 +79,19 @@ const startServer = async () => {
     console.log(`Server is running on port ${PORT}`);
   });
 };
+
+
+// Sincronizar modelos de reseñas
+/**
+(async () => {
+  try {
+    await Review.sync();
+    await ReviewToken.sync();
+    console.log('Tablas Review y ReviewToken sincronizadas');
+  } catch (err) {
+    console.error('Error al sincronizar tablas de reseñas:', err);
+  }
+})();
+ */
 
 startServer();

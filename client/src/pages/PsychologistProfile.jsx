@@ -7,6 +7,9 @@ const PsychologistProfile = () => {
   const [psychologist, setPsychologist] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [reviews, setReviews] = useState([]);
+  const [carouselIndex, setCarouselIndex] = useState(0);
+  const [expanded, setExpanded] = useState({}); // { [index]: true/false }
   const apiUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
@@ -23,6 +26,25 @@ const PsychologistProfile = () => {
 
     fetchPsychologist();
   }, [slug]);
+
+  useEffect(() => {
+    if (psychologist && psychologist.id) {
+      axios.get(`${apiUrl}api/psychologists/${psychologist.id}/reviews`)
+        .then(res => setReviews(res.data))
+        .catch(() => setReviews([]));
+    }
+  }, [psychologist]);
+
+  // Carousel handlers
+  const handlePrev = () => {
+    setCarouselIndex((prev) => (prev === 0 ? reviews.length - 1 : prev - 1));
+  };
+  const handleNext = () => {
+    setCarouselIndex((prev) => (prev === reviews.length - 1 ? 0 : prev + 1));
+  };
+  const handleExpand = (idx) => {
+    setExpanded((prev) => ({ ...prev, [idx]: !prev[idx] }));
+  };
 
   if (loading) return <div className="loading">Cargando...</div>;
   if (error) return <div className="error">{error}</div>;
@@ -106,18 +128,58 @@ const PsychologistProfile = () => {
 
           <section className="section">
               <h2 className="sectionTitle">Reseñas</h2>
-              {psychologist.reseñas.length > 0 ? (
-                psychologist.reseñas.map((reseña, index) => (
-                  <div key={index} className="review">
-                    <div className="reviewHeader">
-                      <span className="reviewAuthor">{reseña.usuario}</span>
-                      <div className="rating">
-                        {'★'.repeat(reseña.rating)}{'☆'.repeat(5 - reseña.rating)}
-                      </div>
-                    </div>
-                    <p className="reviewText">{reseña.comentario}</p>
+              {reviews.length > 0 ? (
+                <div className="review-carousel">
+                  <button className="carousel-btn left" onClick={handlePrev} aria-label="Anterior">&#8592;</button>
+                  <div className="carousel-content">
+                    {(() => {
+                      const reseña = reviews[carouselIndex];
+                      const isLong = reseña.content.length > 220;
+                      const showFull = expanded[carouselIndex];
+                      return (
+                        <div className="review">
+                          <div className="reviewHeader">
+                            <div className="rating">
+                              {reseña.rating ? (
+                                <>
+                                  {Array.from({ length: reseña.rating }).map((_, i) => (
+                                    <span key={i} className="star filled">★</span>
+                                  ))}
+                                  {Array.from({ length: 5 - reseña.rating }).map((_, i) => (
+                                    <span key={i} className="star">★</span>
+                                  ))}
+                                </>
+                              ) : null}
+                            </div>
+                          </div>
+                          <p className="reviewText">
+                            {isLong && !showFull
+                              ? `${reseña.content.slice(0, 220)}...`
+                              : reseña.content}
+                          </p>
+                          {isLong && (
+                            <button className="read-more-btn" onClick={() => handleExpand(carouselIndex)}>
+                              {showFull ? 'Leer menos' : 'Leer más'}
+                            </button>
+                          )}
+                          <span className="reviewDate">
+                            {reseña.createdAt ? new Date(reseña.createdAt).toLocaleDateString() : ''}
+                          </span>
+                        </div>
+                      );
+                    })()}
                   </div>
-                ))
+                  <button className="carousel-btn right" onClick={handleNext} aria-label="Siguiente">&#8594;</button>
+                  <div className="carousel-dots">
+                    {reviews.map((_, idx) => (
+                      <span
+                        key={idx}
+                        className={`dot${carouselIndex === idx ? ' active' : ''}`}
+                        onClick={() => setCarouselIndex(idx)}
+                      />
+                    ))}
+                  </div>
+                </div>
               ) : (
                 <p className="noReviews">Aún no hay reseñas</p>
               )}

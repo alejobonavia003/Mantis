@@ -29,7 +29,7 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
           className={`sidebarItem ${activeTab === "register" ? "active" : ""}`}
           onClick={() => setActiveTab("register")}
         >
-          Registro de psicólogos
+          psicólogos
         </li>
         <li
           className={`sidebarItem ${activeTab === "gallery" ? "active" : ""}`}

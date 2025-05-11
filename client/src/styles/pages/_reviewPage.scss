@@ -1,0 +1,270 @@
+@use '../base/variables';
+@use '../base/mixins';
+
+.review-submit-container {
+  background: variables.$color-primary;
+  max-width: 480px;
+  margin: 48px auto 0 auto;
+  padding: variables.$spacing-extralarge variables.$spacing-large;
+  border-radius: variables.$border-radius;
+  box-shadow: 0 4px 24px rgba(81, 111, 97, 0.10);
+  text-align: center;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include mixins.tablet() {
+    padding: variables.$spacing-large variables.$spacing-small;
+    max-width: 98vw;
+  }
+
+  h2 {
+    color: variables.$color-mantis-1;
+    font-size: variables.$font-size-large;
+    margin-bottom: variables.$spacing-medium;
+    font-weight: bold;
+  }
+}
+
+.review-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: variables.$spacing-medium;
+  align-items: stretch;
+
+  label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: variables.$font-size-small;
+    color: variables.$color-mantis-2;
+    margin-bottom: variables.$spacing-small;
+  }
+
+  textarea {
+    width: 100%;
+    min-height: 90px;
+    border-radius: variables.$border-radius;
+    border: 1px solid variables.$color-detail-2;
+    padding: variables.$spacing-small;
+    font-size: variables.$font-size-small;
+    background: variables.$color-white;
+    color: variables.$color-gray-dark;
+    resize: vertical;
+    margin-top: variables.$spacing-mini;
+    transition: border-color 0.2s;
+    &:focus {
+      border-color: variables.$color-mantis-1;
+      outline: none;
+    }
+  }
+
+  select {
+    margin-top: variables.$spacing-mini;
+    border-radius: variables.$border-radius;
+    border: 1px solid variables.$color-detail-2;
+    padding: variables.$spacing-extrasmall variables.$spacing-small;
+    font-size: variables.$font-size-small;
+    background: variables.$color-white;
+    color: variables.$color-mantis-1;
+    transition: border-color 0.2s;
+    &:focus {
+      border-color: variables.$color-mantis-1;
+      outline: none;
+    }
+  }
+
+  button[type="submit"] {
+    margin-top: variables.$spacing-medium;
+    background: variables.$color-secondary;
+    color: variables.$color-white;
+    border: none;
+    border-radius: variables.$border-radius;
+    padding: variables.$spacing-small variables.$spacing-large;
+    font-size: variables.$font-size-medium;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(81, 111, 97, 0.08);
+    transition: background 0.2s, box-shadow 0.2s;
+    &:hover {
+      background: darken(variables.$color-secondary, 10%);
+      box-shadow: 0 4px 16px rgba(81, 111, 97, 0.13);
+    }
+  }
+}
+
+.star-rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  gap: 2px;
+  margin-top: variables.$spacing-mini;
+  margin-bottom: variables.$spacing-small;
+  user-select: none;
+
+  .star {
+    font-size: 2.1rem;
+    color: variables.$color-detail-1;
+    transition: color 0.2s;
+    cursor: pointer;
+    &.filled {
+      color: variables.$color-mantis-1;
+      text-shadow: 0 2px 8px rgba(81, 111, 97, 0.10);
+    }
+    &:hover,
+    &:focus {
+      color: darken(variables.$color-mantis-1, 10%);
+    }
+  }
+}
+
+.review {
+  background: variables.$color-primary-alt;
+  border-radius: variables.$border-radius;
+  box-shadow: 0 2px 8px rgba(81, 111, 97, 0.07);
+  padding: variables.$spacing-medium;
+  margin-bottom: variables.$spacing-medium;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  .reviewHeader {
+    display: flex;
+    align-items: center;
+    gap: variables.$spacing-small;
+    margin-bottom: variables.$spacing-mini;
+  }
+
+  .rating {
+    display: flex;
+    gap: 2px;
+    .star {
+      font-size: 1.3rem;
+      color: #ccc;
+      &.filled {
+        color: variables.$color-mantis-1;
+        text-shadow: 0 2px 8px rgba(81, 111, 97, 0.10);
+      }
+    }
+  }
+
+  .reviewText {
+    color: variables.$color-gray-dark;
+    font-size: variables.$font-size-small;
+    margin-bottom: variables.$spacing-mini;
+    margin-top: 2px;
+  }
+
+  .reviewDate {
+    color: variables.$color-mantis-2;
+    font-size: variables.$font-size-xsmall;
+    margin-top: 2px;
+  }
+}
+
+.review-carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin-bottom: variables.$spacing-large;
+
+  .carousel-content {
+    width: 100%;
+    min-width: 260px;
+    max-width: 420px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+  }
+
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: variables.$color-mantis-1;
+    color: variables.$color-white;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 2;
+    opacity: 0.85;
+    transition: background 0.2s, opacity 0.2s;
+    &:hover {
+      background: darken(variables.$color-mantis-1, 10%);
+      opacity: 1;
+    }
+    &.left { left: -44px; }
+    &.right { right: -44px; }
+    @include mixins.tablet() {
+      &.left { left: -18px; }
+      &.right { right: -18px; }
+    }
+  }
+
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: variables.$spacing-small;
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: variables.$color-detail-1;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      &.active {
+        background: variables.$color-mantis-1;
+        transform: scale(1.2);
+      }
+    }
+  }
+}
+
+.read-more-btn {
+  background: none;
+  color: variables.$color-mantis-1;
+  border: none;
+  font-size: variables.$font-size-xsmall;
+  cursor: pointer;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  text-decoration: underline;
+  &:hover {
+    color: darken(variables.$color-mantis-1, 10%);
+  }
+}
+
+.noReviews {
+  color: variables.$color-mantis-2;
+  font-size: variables.$font-size-small;
+  font-style: italic;
+  margin-top: variables.$spacing-small;
+}
+
+.success {
+  color: variables.$color-mantis-1;
+  background: variables.$color-detail-2;
+  border-radius: variables.$border-radius;
+  padding: variables.$spacing-medium;
+  margin-top: variables.$spacing-large;
+  font-size: variables.$font-size-medium;
+  font-weight: bold;
+}
+
+.error {
+  color: variables.$color-white;
+  background: variables.$color-detail-1;
+  border-radius: variables.$border-radius;
+  padding: variables.$spacing-medium;
+  margin-top: variables.$spacing-large;
+  font-size: variables.$font-size-small;
+  font-weight: bold;
+}

@@ -8,6 +8,8 @@ const AdminPsRegister = () => {
   const [selectedPsychologist, setSelectedPsychologist] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [reviewLinks, setReviewLinks] = useState({}); // { [psychologistId]: { link, expiresAt, timeoutId } }
+  const [reviews, setReviews] = useState({}); // { [psychologistId]: [ ...reseñas ] }
   const apiUrl = import.meta.env.VITE_API_URL;
 
   // Cargar psicólogos al montar el componente
@@ -24,6 +26,44 @@ const AdminPsRegister = () => {
     };
     loadPsychologists();
   }, []);
+
+  // Cargar reseñas de un psicólogo
+  const fetchReviews = async (psychologistId) => {
+    try {
+      const response = await axios.get(`${apiUrl}api/psychologists/${psychologistId}/reviews`);
+      setReviews(prev => ({ ...prev, [psychologistId]: response.data }));
+    } catch (err) {
+      // Puedes manejar el error si lo deseas
+    }
+  };
+
+  // Generar link de reseña
+  const handleGenerateReviewLink = async (psychologistId) => {
+    try {
+      const response = await axios.post(`${apiUrl}api/psychologists/${psychologistId}/review-link`);
+      const { link, expiresAt } = response.data;
+      setReviewLinks(prev => {
+        // Si ya hay un timeout, lo limpiamos
+        if (prev[psychologistId]?.timeoutId) {
+          clearTimeout(prev[psychologistId].timeoutId);
+        }
+        // Seteamos el nuevo timeout para limpiar el link después de 74 horas
+        const timeoutId = setTimeout(() => {
+          setReviewLinks(current => ({ ...current, [psychologistId]: undefined }));
+        }, 74 * 60 * 60 * 1000); // 74 horas en ms
+        return { ...prev, [psychologistId]: { link, expiresAt, timeoutId } };
+      });
+    } catch (err) {
+      alert('Error generando link de reseña');
+    }
+  };
+
+  // Cargar reseñas al montar o cuando cambia la lista de psicólogos
+  useEffect(() => {
+    psychologists.forEach(psychologist => {
+      fetchReviews(psychologist.id);
+    });
+  }, [psychologists]);
 
   // Manejar creación/actualización
   const handleSubmit = async (formData) => {
@@ -84,14 +124,7 @@ const AdminPsRegister = () => {
   return (
     <div className="ps-container">
 
-      <PsicologoForm
-        onSubmit={handleSubmit}
-        initialData={selectedPsychologist}
-        onCancel={() => setSelectedPsychologist(null)}
-      />
-
-      <div className="ps-list">
-        <h3>Psicólogos Registrados</h3>
+            <div className="ps-list">
         {psychologists.map(psychologist => (
           <div key={psychologist.id} className="ps-card">
             <div className="ps-card-header">
@@ -118,10 +151,58 @@ const AdminPsRegister = () => {
               >
                 Eliminar
               </button>
+              <button
+                className="generate-link-button"
+                style={{ marginLeft: 'auto' }}
+                onClick={() => handleGenerateReviewLink(psychologist.id)}
+              >
+                Generar link de reseña
+              </button>
             </div>
+
+            {/* Casilla de texto para mostrar el link generado */}
+            {reviewLinks[psychologist.id]?.link && (
+              <div className="review-link-box">
+                <input
+                  type="text"
+                  value={reviewLinks[psychologist.id].link}
+                  readOnly
+                  style={{ width: '100%', marginTop: 8 }}
+                  onFocus={e => e.target.select()}
+                />
+                <small>Este link se eliminará automáticamente en 74 horas.</small>
+              </div>
+            )}
+
+            {/* Lista de reseñas */}
+            {reviews[psychologist.id] && reviews[psychologist.id].length > 0 && (
+              <div className="review-list">
+                <h5>Reseñas recibidas:</h5>
+                <ul>
+                  {reviews[psychologist.id].map((review) => (
+                    <li key={review.id}>
+                      <span style={{ fontWeight: 'bold' }}>{review.rating ? `★${review.rating}` : ''}</span> {review.content}
+                      <span style={{ color: '#888', fontSize: '0.8em', marginLeft: 8 }}>
+                        ({new Date(review.createdAt).toLocaleDateString()})
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         ))}
       </div>
+
+
+<h2>Formulario de registro o edicion de usuario.</h2>
+      <PsicologoForm
+        onSubmit={handleSubmit}
+        initialData={selectedPsychologist}
+        onCancel={() => setSelectedPsychologist(null)}
+      />
+
+
     </div>
   );
 };

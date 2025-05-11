@@ -13,6 +13,7 @@ import WhatsAppButton from "./components/WhatsAppButton";
 import PageEditor from "./components/AdminPageEditor";
 import PsychologistProfile from "./pages/PsychologistProfile";
 import SingleProduct from "./pages/SingleProduct";
+import ReviewSubmitPage from './pages/ReviewSubmitPage';
 import './styles/style.css'
 
 function App() {
@@ -42,7 +43,7 @@ function App() {
         <Route path="/rol-del-terapeuta" element={<RolPage />} />
         <Route path="/productos/:id" element={<SingleProduct />} />
         <Route path="/turnos" element={<Turnos />} />
-
+        <Route path="/review/submit/:token" element={<ReviewSubmitPage />} />
         <Route path="/psicologos/:slug" element={<PsychologistProfile />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
