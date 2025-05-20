@@ -33,8 +33,8 @@
   }
 
   .topImage > img{
-    width: 300px;
-    height: 300px;
+    max-width: 100%;
+    max-height: 300px;
   }
 
 
@@ -143,8 +143,7 @@
   
   /* Contenedor de imagen con borde de 2px */
   .productImageContainer {
-    width: 200px;
-    height: 200px;
+
     border: 2px solid #000;
     border-radius: 8px;
     overflow: hidden;
@@ -266,17 +265,18 @@
       width: 100%; /* Tarjetas ocupan todo el ancho disponible */
       min-height: auto; /* Ajustar altura mínima */
     }
+
+    .cardWrapper > img {
+      max-width: 100%;
+      max-height: 300px;
+    }
   
     .productImageContainer {
       width: 100%; /* Imagen ocupa todo el ancho */
       height: auto; /* Mantener proporción */
     }
   
-    .productImage {
-      width: 100%; /* Imagen ocupa todo el ancho */
-      height: auto; /* Mantener proporción */
-    }
-  
+ 
     .mainButtonContainer {
       margin-top: 1rem;
     }
