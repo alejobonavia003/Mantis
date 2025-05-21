@@ -37,11 +37,7 @@ const TherapyBlock = ({ configuration }) => {
             alt="Pincelada izquierda"
             className={styles.pinseladaLeft}
           />
-          <img
-            src="/pinselada.png"
-            alt="Pincelada centro"
-            className={styles.pinseladaCenter}
-          />
+
           <img
             src="/pinselada-3.png"
             alt="Pincelada derecha"
