@@ -8,6 +8,7 @@ import BlockConfigurator from './blocks/BlockConfigurator';
 const PageEditor = ({ page }) => {
   const [pageBlocks, setPageBlocks] = useState([]);
   const [selectedBlock, setSelectedBlock] = useState(null);
+  const [showPinseladas, setShowPinseladas] = useState(false);
   const apiUrl = import.meta.env.VITE_API_URL;
 
   // Función para reordenar bloques
@@ -111,6 +112,7 @@ const handleBlockSelect = (block) => {
 };
   return (
     <div className="editorContainer">
+
       <BlockLibrary
         onSelectBlock={setSelectedBlock}
         onBlockAdded={handleBlockAdded}

@@ -25,8 +25,31 @@ const TherapyBlock = ({ configuration }) => {
     return () => observer.disconnect();
   }, []);
 
+  // Renderizar manchas decorativas si están activadas y se seleccionaron todas
+  const showAllBlobs = (configuration?.blobs);
   return (
     <div className={styles.therapyBlock} style={{ backgroundColor }}>
+      {/* Manchas decorativas laterales fijas y responsivas */}
+      {showAllBlobs && (
+        <>
+          <img
+            src="/pinselada-1.png"
+            alt="Pincelada izquierda"
+            className={styles.pinseladaLeft}
+          />
+          <img
+            src="/pinselada.png"
+            alt="Pincelada centro"
+            className={styles.pinseladaCenter}
+          />
+          <img
+            src="/pinselada-3.png"
+            alt="Pincelada derecha"
+            className={styles.pinseladaRight}
+          />
+        </>
+      )}
+
       <h2 className={styles.mainTitle}>{title}</h2>
 
       {configuration?.subtitle1 && (

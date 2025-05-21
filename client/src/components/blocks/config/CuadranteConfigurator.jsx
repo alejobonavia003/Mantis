@@ -64,6 +64,16 @@ const TherapyConfigurator = ({ config, onChange }) => {
         />
       </label>
 
+      <label className={styles.label}>
+        Manchas decorativas (pinceladas):
+        <input
+          type="checkbox"
+          checked={!!config.blobs}
+          onChange={e => handleChange('blobs', e.target.checked)}
+          className={styles.input}
+        />
+        <span style={{marginLeft: 8}}>Mostrar manchas decorativas</span>
+      </label>
 
     </>
   );

@@ -112,6 +112,61 @@
   border-radius: 0 0 10px 0;
 }
 
-@media screen and (max-width: 768px) {
+.therapyBlock {
+  position: relative;
+  padding: 2rem;
+  overflow: hidden;
+}
 
+.pinseladaLeft,
+.pinseladaCenter,
+.pinseladaRight {
+  position: absolute;
+  width: 60px;
+  height: auto;
+  z-index: 1;
+  opacity: 0.6;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 0.3s;
+}
+
+.pinseladaLeft {
+  top: 50%;
+  left: 10%;
+}
+
+
+.pinseladaRight {
+  top: 40%;
+  right: 10%;
+}
+
+/* Responsive: ocultar en pantallas pequeñas */
+@media (max-width: 1100px) {
+  .pinseladaLeft{
+    top : 10%;
+    left: 5%;
+  }
+
+  .pinseladaCenter{
+    left: 30%;
+    display: block;
+    top: 75%;
+    width: 30px;
+  
+  }
+
+
+  .pinseladaRight {
+    top: 30%;
+    right: 5%;
+  }
+}
+
+@media (min-Width: 1100px){
+  .pinseladaCenter{
+    left: 5%;
+    display: none;
+  }
 }
