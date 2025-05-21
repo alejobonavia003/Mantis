@@ -28,23 +28,41 @@ const TherapyBlock = ({ configuration }) => {
   // Renderizar manchas decorativas si están activadas y se seleccionaron todas
   const showAllBlobs = (configuration?.blobs);
   return (
-    <div className={styles.therapyBlock} style={{ backgroundColor }}>
-      {/* Manchas decorativas laterales fijas y responsivas */}
+    <div className={styles.therapyBlockMain} style={{ backgroundColor }}>
+ {/* Manchas decorativas laterales fijas y responsivas */}
       {showAllBlobs && (
         <>
           <img
             src="/pinselada-1.png"
             alt="Pincelada izquierda"
-            className={styles.pinseladaLeft}
+            className={styles.pinselada&&styles.pinsel1}
           />
 
           <img
-            src="/pinselada-3.png"
+            src="/pinselada.png"
             alt="Pincelada derecha"
-            className={styles.pinseladaRight}
+            className={styles.pinselada&&styles.pinsel2}
           />
+                    <img
+            src="/pinselada-1.png"
+            alt="Pincelada derecha"
+            className={styles.pinselada&&styles.pinsel3}
+          />
+                    <img
+            src="/pinselada-1.png"
+            alt="Pincelada derecha"
+            className={styles.pinselada&&styles.pinsel4}
+          />
+                    <img
+            src="/pinselada-1.png"
+            alt="Pincelada derecha"
+            className={styles.pinselada&&styles.pinsel5}
+          />
+
         </>
       )}
+    <div className={styles.therapyBlock} >
+     
 
       <h2 className={styles.mainTitle}>{title}</h2>
 
@@ -69,41 +87,20 @@ const TherapyBlock = ({ configuration }) => {
         </div>
       )}
 
-      <div className={styles.quadrantsContainer}>
 
-        {configuration?.subtitle3 && (
-          <div
-            ref={el => el && quadrantsRef.current.push(el)}
-            className={`${styles.quadrant} ${styles.right}`}
-          >
-            <div
-              className={styles.subtitle}
-              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(configuration?.subtitle3) }}
-            />
-          </div>
-        )}
-
-        {configuration?.subtitle4 && (
-          <div ref={el => el && quadrantsRef.current.push(el)}
-            className={`${styles.quadrantNONE} ${styles.left}`}>
-            <div
-              className={styles.subtitle}
-              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(configuration?.subtitle5) }}
-            />
-          </div>
-        )}
-      </div>
 
       {// CUADRANTE DE LA PARTE INFERIOR IZQUIERDA
       }
 
 
-      <div className={styles.quadrantsContainer}>
+      <div className={styles.quadrantsContainer}
+        style={{ display: 'flex', justifyContent: 'flex-end' }}>
 
         {configuration?.subtitle3 && (
           <div
             ref={el => el && quadrantsRef.current.push(el)}
             className={`${styles.quadrantNONE} ${styles.right}`}
+            style={{ display: 'none' }}
           >
             <div
               className={styles.subtitle}
@@ -123,6 +120,34 @@ const TherapyBlock = ({ configuration }) => {
         )}
       </div>
 
+    </div>
+
+       <div className={styles.quadrantsContainer}
+       style={{ display: 'flex', justifyContent: 'flex-start' }}>
+
+        {configuration?.subtitle3 && (
+          <div
+            ref={el => el && quadrantsRef.current.push(el)}
+            className={`${styles.quadrant} ${styles.right}`}
+          >
+            <div
+              className={styles.subtitle}
+              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(configuration?.subtitle3) }}
+            />
+          </div>
+        )}
+
+        {configuration?.subtitle4 && (
+          <div ref={el => el && quadrantsRef.current.push(el)}
+            className={`${styles.quadrantNONE} ${styles.left}`}
+            style={{ display: 'none' }}>
+            <div
+              className={styles.subtitle}
+              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(configuration?.subtitle5) }}
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 };

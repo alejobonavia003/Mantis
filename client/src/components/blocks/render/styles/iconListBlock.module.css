@@ -1,18 +1,17 @@
 /* Contenedor general */
 .iconListContainer {
-  
-
+  text-align: center;
   margin: 0 auto;
 }
 
 .titleBlock {
   text-align: center;
   margin-bottom: 2rem;
+  color: #516f61;
 }
 
 .listTitle {
   font-size: 3rem;
-  color: #000;
   max-width: 800px;
 }
 
@@ -20,7 +19,10 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
+
 }
+
+
 
 /* Botones, subtítulo, etc. (igual que antes) */
 .buttonContainer {
@@ -43,9 +45,19 @@
 }
 
 .contenedordelsubtitulo {
+  width: 100%;
   font-size: 1.2rem;
-  color: #666;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+
+}
+
+.contenedordelsubtitulo > h3 {
+    width: 80%;
+    color: #516f61;
+      padding: 50px 0px;
 }
 
 /* ---- Disposición tipo "manchas" ---- */
