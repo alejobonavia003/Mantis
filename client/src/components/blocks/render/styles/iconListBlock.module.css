@@ -1,7 +1,7 @@
 /* Contenedor general */
 .iconListContainer {
   
-  max-width: 80%;
+
   margin: 0 auto;
 }
 
@@ -34,6 +34,7 @@
 .heroButton {
   color: #dfd8c7;
   padding: 12px 30px;
+  margin-bottom: 20px;
   border-radius: 5px;
   text-decoration: none;
   font-size: 1rem;
@@ -113,9 +114,7 @@
   .itemText > p {
     font-size: 0.9rem;
   }
-  .iconListContainer {
-    max-width: 90%;
-  }
+
 }
 
 @media (max-width: 480px) {
