@@ -1,0 +1,138 @@
+Guía para la Creación y Configuración de Bloques
+
+Nuestro sistema de bloques se estructura en cinco pasos clave para garantizar una integración y renderización coherente en el proyecto. A continuación, se detalla cada uno de ellos:
+
+Registro de Datos en la Base de Datos
+Cada bloque se define registrando la información necesaria en la base de datos. Por ejemplo, para un bloque "hero", se almacena la siguiente configuración:
+
+javascript
+export const blockTypes = {
+hero: {
+  name: 'Hero',
+  description: 'Título con descripción y 3 botones centrados',
+  icon: '🖼️',
+  defaultConfig: {
+    title: 'Título principal',
+    subtitle: 'Subtítulo descriptivo',
+    backgroundColor: '#F7EFCB',
+    image: '',
+    blobs: [], // Array para almacenar múltiples manchas
+    buttonText1: 'Ver más',
+    buttonUrl1: '#',
+    buttonColor1: '#007bff',
+  }
+},
+};
+Creación del Componente Configurador
+Se desarrolla un componente React que maneja la lógica de configuración del bloque en el frontend. Este componente, por ejemplo HeroConfigurator, permite editar campos como título, subtítulo, imágenes, y datos de los botones, además de gestionar galerías para imágenes y manchas:
+
+javascript
+import { useState } from 'react';
+import ImageGallery from '../../AdminImageGallery';
+import styles from '../render/styles/configuratorBlock.module.css';
+import RichTextEditor from '../../dnd/RichTextEditor';
+
+const HeroConfigurator = ({ config, onChange }) => {
+  // Estados y funciones de manejo para editar configuración
+  // ...
+  return (
+    <>
+      <label className={styles.label}>
+        Título:
+        <input
+          type="text"
+          value={config.title || ''}
+          onChange={(e) => handleChange('title', e.target.value)}
+          className={styles.input}
+        />
+      </label>
+
+      <label className={styles.label}>
+  Parraffo:
+  <RichTextEditor
+    value={config.subtitle || ''}
+    onChange={(content) => handleChange('subtitle', content)}
+  />
+</label>
+      {/* Se repite la estructura para cada campo (subtítulo, botones, colores, imagen de fondo, etc.) */}
+    </>
+  );
+};
+
+export default HeroConfigurator;
+Registro de la Configuración
+Al configurar un bloque, se invoca el componente configurador correspondiente. Por ejemplo, al detectar un bloque de tipo "hero", se carga el HeroConfigurator:
+
+jsx
+{block.type === 'hero' && (
+  <HeroConfigurator config={config} onChange={handleChange} />
+)}
+Lógica de Renderizado del Bloque
+Se implementa la renderización del bloque utilizando la información configurada. En el caso del bloque "hero", se utiliza un componente HeroBlock que aplica estilos y renderiza cada elemento (título, subtítulo, botones y manchas) de forma dinámica:
+
+javascript
+import React from 'react';
+import DOMPurify from 'dompurify';
+import styles from "./styles/heroBlock.module.css";
+
+const HeroBlock = ({ configuration }) => {
+  const backgroundStyle = configuration?.image 
+    ? { backgroundImage: `url(${configuration.image})` } 
+    : { backgroundColor: configuration?.backgroundColor || '#ffffff' };
+
+  return (
+    <div className={styles.previewHero} style={backgroundStyle}>
+      {/* Renderización de manchas decorativas */}
+      {configuration.blobs?.map((blob, index) => {
+        const side = index % 2 === 0 ? '1%' : '80%';
+        const topPos = Math.random() * 80;
+        return (
+          <img
+            key={index}
+            src={blob}
+            alt={`Mancha decorativa ${index + 1}`}
+            className={styles.blob}
+            style={{ top: `${topPos}%`, left: side }}
+          />
+        );
+      })}
+      <div className={styles.heroContent}>
+        {configuration?.title && (
+          <h2 className={styles.heroTitle}>{configuration.title}</h2>
+        )}
+        <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(configuration.subtitle || '') }} />
+        <div className={styles.buttonContainer}>
+          {configuration?.buttonText1 && (
+            <a
+              href={configuration.buttonUrl1 || '#'}
+              className={styles.heroButton}
+              style={{ backgroundColor: configuration.buttonColor1 || '#007bff' }}
+            >
+              {configuration.buttonText1}
+            </a>
+          )}
+          {/* Se renderizan los botones 2 y 3 de forma similar */}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default HeroBlock;
+Registro del Bloque para Renderizado
+Finalmente, se registra el bloque en la lógica de renderizado general. Según el tipo de bloque, se invoca el componente correspondiente dentro de un switch o estructura condicional:
+
+jsx
+switch (block.type) {
+  case 'hero':
+    return (
+      <div className={containerClass}>
+        <HeroBlock configuration={block.configuration} />
+      </div>
+    );
+  // Se añaden otros casos para diferentes tipos de bloques
+}
+
+entre algunos detalles tambien se usa estilos modulares style. css
+tambien para modificar textos se usa RichTextEditor y luego en el renderidador se usa para renderizar el texto
+

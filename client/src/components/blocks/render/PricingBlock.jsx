@@ -14,7 +14,7 @@ const PricingBlock = ({ configuration }) => {
 
   return (
     <div className={styles.outerContainer} style={{ backgroundColor: configuration?.backgroundColor || '#ffffff' }}>
-      <div className={styles.pricingSection}>
+      <div className={styles.pricingSection} style={{ backgroundColor: configuration?.backgroundColor || '#ffffff' }}>
         {/* Círculo decorativo superior */}
         <div className={styles.decorationCircle}>
           <img

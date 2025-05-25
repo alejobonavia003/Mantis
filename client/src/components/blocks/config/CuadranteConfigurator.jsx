@@ -75,6 +75,39 @@ const TherapyConfigurator = ({ config, onChange }) => {
         <span style={{marginLeft: 8}}>Mostrar manchas decorativas</span>
       </label>
 
+
+      <label className={styles.label}>
+        Texto del botón 3:
+        <input
+          type="text"
+          value={config.buttonText3 || ''}
+          onChange={(e) => handleChange('buttonText3', e.target.value)}
+          className={styles.input}
+        />
+      </label>
+
+      <label className={styles.label}>
+        URL del botón 3:
+        <input
+          type="url"
+          value={config.buttonUrl3 || ''}
+          onChange={(e) => handleChange('buttonUrl3', e.target.value)}
+          className={styles.input}
+        />
+      </label>
+
+
+
+      <label className={styles.label}>
+        Color del botón 3:
+        <input
+          type="color"
+          value={config.buttonColor3 || '#007bff'}
+          onChange={(e) => handleChange('buttonColor3', e.target.value)}
+          className={styles.colorInput}
+        />
+      </label>
+
     </>
   );
 };

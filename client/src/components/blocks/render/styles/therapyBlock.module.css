@@ -28,6 +28,27 @@
   z-index: 5;
 }
 
+.quadrantsContainers{
+display: flex;
+flex-direction: column;
+
+}
+
+.heroButton3 {
+  color: black;
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+
+  &:hover {
+    background-color: #9dcdbb;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+}
+
 .quadrant { /* Se llamaba .quadrant-box */
   position: relative;
   width: 220px;

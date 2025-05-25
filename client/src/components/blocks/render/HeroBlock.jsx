@@ -11,25 +11,6 @@ const HeroBlock = ({ configuration }) => {
 
   return (
     <div className={styles.previewHero} style={backgroundStyle}>
-      {/* Renderizar múltiples manchas */}
-      {configuration.blobs?.map((blob, index) => {
-  // Decidir si va a la izquierda o derecha
-  const side = index % 2 === 0 ? '1%' : '80%';
-  const topPos = Math.random() * 80; // Porcentaje vertical
-
-  return (
-    <img
-      key={index}
-      src={blob}
-      alt={`Mancha decorativa ${index + 1}`}
-      className={styles.blob}
-      style={{
-        top: `${topPos}%`,
-        left: side
-      }}
-    />
-  );
-})}
 
 
       <div className={styles.heroContent}>

@@ -93,7 +93,13 @@ const TherapyBlock = ({ configuration }) => {
       }
 
 
-      <div className={styles.quadrantsContainer}
+
+
+    </div>
+
+    <div className={styles.quadrantsContainers}>
+
+          <div className={styles.quadrantsContainer}
         style={{ display: 'flex', justifyContent: 'flex-end' }}>
 
         {configuration?.subtitle3 && (
@@ -120,8 +126,6 @@ const TherapyBlock = ({ configuration }) => {
         )}
       </div>
 
-    </div>
-
        <div className={styles.quadrantsContainer}
        style={{ display: 'flex', justifyContent: 'flex-start' }}>
 
@@ -147,7 +151,18 @@ const TherapyBlock = ({ configuration }) => {
             />
           </div>
         )}
+
+        </div>
       </div>
+          {configuration?.buttonText3 && (
+            <a 
+              href={configuration?.buttonUrl3 || '#'} 
+              className={styles.heroButton3}
+              style={{ backgroundColor: configuration?.buttonColor3 || '#007bff' }}
+            >
+              {configuration.buttonText3}
+            </a>
+          )}
     </div>
   );
 };

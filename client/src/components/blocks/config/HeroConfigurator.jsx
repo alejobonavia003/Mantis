@@ -7,7 +7,6 @@ const HeroConfigurator = ({ config, onChange }) => {
   const [showBlobGallery, setShowBlobGallery] = useState(false);
   
   const [showGallery, setShowGallery] = useState(false);
-  const [showGalleryblobs, setShowGalleryblobs] = useState(false);
   const apiUrl = import.meta.env.VITE_API_URL;
 
   const handleChange = (field, value) => {
@@ -19,11 +18,7 @@ const HeroConfigurator = ({ config, onChange }) => {
     setShowGallery(false);
   };
 
-  const handleSelectBlobs = (image) => {
-    const newIcons = [...(config.blobs || []), image.url];
-    handleChange('blobs', newIcons);
-    setShowBlobGallery(false);
-  };
+
 
 
 
@@ -206,49 +201,6 @@ const HeroConfigurator = ({ config, onChange }) => {
                   </button>
                 </div>
               )}
-
-
-
-
-      <div className={styles.section}>
-        <h3>Manchas</h3>
-        <div className={styles.imageGrid}>
-          {config.blobs?.map((blob, index) => (
-            <div key={index} className={styles.imageThumbnail}>
-              <img src={blob} alt={`Icono ${index + 1}`} className={styles.imageiconlist}/>
-              <button
-                type="button"
-                onClick={() => handleChange('blobs', config.blobs.filter((_, i) => i !== index))}
-                className={styles.removeButton}
-              >
-                X
-              </button>
-            </div>
-          ))}
-          <button
-            type="button"
-            onClick={() => setShowGalleryblobs(true)}
-            className={styles.addImageButton}
-          >
-            + Agregar Ícono
-          </button>
-        </div>
-
-              {showGalleryblobs && (
-                <div className={styles.galleryModal}>
-                  <ImageGallery onSelectImage={handleSelectBlobs} apiUrl={apiUrl} />
-                  <button
-                    type="button"
-                    onClick={() => setShowGalleryblobs(false)}
-                    className={styles.closeButton}
-                  >
-                    Cerrar Galería
-                  </button>
-                </div>
-              )}
-            
-
-      </div>
 
 
       

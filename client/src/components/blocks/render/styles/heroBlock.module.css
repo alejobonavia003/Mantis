@@ -49,11 +49,11 @@ p {
 }
 
 .heroButton {
-  color: #dfd8c7;
+  color: black;
   padding: 0.5rem 1.5rem;
-  border-radius: 8px;
+  border-radius: 5px;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 1.2rem;
   transition: all 0.3s ease;
   border: 2px solid transparent;
 
@@ -63,11 +63,11 @@ p {
   }
 }
 .heroButton2 {
-  color: #516f61;
+  color: black;
   padding: 0.5rem 1.5rem;
-  border-radius: 8px;
+  border-radius: 5px;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 1.2rem;
   transition: all 0.3s ease;
   border: 2px solid transparent;
 
@@ -77,11 +77,11 @@ p {
   }
 }
 .heroButton3 {
-  color: #516f61;
+  color: black;
   padding: 0.5rem 1.5rem;
-  border-radius: 8px;
+  border-radius: 5px;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 1.2rem;
   transition: all 0.3s ease;
   border: 2px solid transparent;
 
@@ -91,31 +91,8 @@ p {
   }
 }
 
-/* Estilos para las manchas flotantes (nuevo) */
-.blob {
-  position: absolute;
-  z-index: 1;              /* Debajo del contenido (que tiene z-index: 2) */
-  width: 150px;            /* Ajusta el tamaño de la mancha */
-  height: auto;
-  opacity: 0.8;            /* Ajusta transparencia si quieres */
-  pointer-events: none;    /* No interfiere con clics en el hero */
-  animation: floatBlob 5s ease-in-out infinite alternate;
-}
+
 
 @media screen and (max-width: 750px) {
-  .blob {
-    width: 50px;            /* Ajusta el tamaño de la mancha */
-    height: auto;
-  }
 
-  
-}
-
-@keyframes floatBlob {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(20px);
-  }
 }
