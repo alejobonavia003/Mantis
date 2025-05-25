@@ -97,63 +97,7 @@ const TherapyBlock = ({ configuration }) => {
 
     </div>
 
-    <div className={styles.quadrantsContainers}>
 
-          <div className={styles.quadrantsContainer}
-        style={{ display: 'flex', justifyContent: 'flex-end' }}>
-
-        {configuration?.subtitle3 && (
-          <div
-            ref={el => el && quadrantsRef.current.push(el)}
-            className={`${styles.quadrantNONE} ${styles.right}`}
-            style={{ display: 'none' }}
-          >
-            <div
-              className={styles.subtitle}
-              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(configuration?.subtitle5) }}
-            />
-          </div>
-        )}
-
-        {configuration?.subtitle4 && (
-          <div ref={el => el && quadrantsRef.current.push(el)}
-            className={`${styles.quadrant} ${styles.left}`}>
-            <div
-              className={styles.subtitle}
-              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(configuration?.subtitle4) }}
-            />
-          </div>
-        )}
-      </div>
-
-       <div className={styles.quadrantsContainer}
-       style={{ display: 'flex', justifyContent: 'flex-start' }}>
-
-        {configuration?.subtitle3 && (
-          <div
-            ref={el => el && quadrantsRef.current.push(el)}
-            className={`${styles.quadrant} ${styles.right}`}
-          >
-            <div
-              className={styles.subtitle}
-              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(configuration?.subtitle3) }}
-            />
-          </div>
-        )}
-
-        {configuration?.subtitle4 && (
-          <div ref={el => el && quadrantsRef.current.push(el)}
-            className={`${styles.quadrantNONE} ${styles.left}`}
-            style={{ display: 'none' }}>
-            <div
-              className={styles.subtitle}
-              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(configuration?.subtitle5) }}
-            />
-          </div>
-        )}
-
-        </div>
-      </div>
           {configuration?.buttonText3 && (
             <a 
               href={configuration?.buttonUrl3 || '#'} 

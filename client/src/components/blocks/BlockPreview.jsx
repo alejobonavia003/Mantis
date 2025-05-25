@@ -18,7 +18,8 @@ import ComentariosBlock from './render/ComentariosBlock';
 import PasoAPasoBlock from './render/PasoAPasoBlock';
 import PreguntasLargasBlock from './render/PreguntasLargasBlock';
 import RolDelTerapeutaBlock from './render/RolDelTerapeutaBlock';
-import MaterialRequestBlock from './render/MaterialRequestBlock'
+import MaterialRequestBlock from './render/MaterialRequestBlock';
+import QuadranteImageBlock from './render/QuadranteImageBlock';
 
 
 const BlockPreview = ({ block }) => {
@@ -142,6 +143,12 @@ const BlockPreview = ({ block }) => {
     return (
       <div className={containerClass}>
         <MaterialRequestBlock configuration={block.configuration} />
+      </div>
+    );
+    case 'imageQuadrants':
+    return (
+      <div className={containerClass}>
+        <QuadranteImageBlock configuration={block.configuration} />
       </div>
     );
     default:

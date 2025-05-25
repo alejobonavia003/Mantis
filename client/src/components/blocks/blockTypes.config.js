@@ -306,4 +306,16 @@ export const blockTypes = {
       ],
     },
   },
+  imageQuadrants: {
+    name: 'Imagen con dos cuadrantes',
+    description: 'Imagen a la izquierda y dos cuadrantes de información a la derecha',
+    icon: '🖼️',
+    defaultConfig: {
+      title: 'Título del bloque',
+      backgroundColor: '#ffffff',
+      image: '',
+      cuadrante1: '',
+      cuadrante2: '',
+    }
+  }
   };

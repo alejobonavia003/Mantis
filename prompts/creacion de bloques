@@ -134,5 +134,5 @@ switch (block.type) {
 }
 
 entre algunos detalles tambien se usa estilos modulares style. css
-tambien para modificar textos se usa RichTextEditor y luego en el renderidador se usa para renderizar el texto
+tambien para modificar textos se usa RichTextEditor y luego en el renderidador se usa para renderizar el texto se purifica con DOMPurify para evitar inyecciones de código malicioso.
 

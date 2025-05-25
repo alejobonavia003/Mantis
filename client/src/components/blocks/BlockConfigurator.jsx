@@ -16,7 +16,8 @@ import ComentariosConfigurator from './config/ComentariosConfigurator';
 import PasoAPasoConfigurator from './config/PasoAPasoConfigurator';
 import PreguntasLargas from './config/PreguntasLargasConfigurator';
 import RolDelTerapeutaConfigurator from './config/RolDelTerapeutaConfigurator';
-import MaterialRequestConfigurator from './config/MaterialRequestConfigurator'
+import MaterialRequestConfigurator from './config/MaterialRequestConfigurator';
+import QuadranteImageConfigurator from './config/QuadranteImageConfigurator';
 
 const BlockConfigurator = ({ block, onUpdate }) => {
   const [config, setConfig] = useState(block.configuration);
@@ -90,6 +91,9 @@ const BlockConfigurator = ({ block, onUpdate }) => {
       )}
       {block.type === 'materialRequest' && (
         <MaterialRequestConfigurator config={config} onChange={handleChange} />
+      )}
+      {block.type === 'imageQuadrants' && (
+        <QuadranteImageConfigurator config={config} onChange={handleChange} />
       )}
 
       <button
