@@ -9,7 +9,13 @@ const IconListBlock = ({ configuration }) => {
   };
 
   return (
-    <div className={styles.iconListContainer} style={{ backgroundColor: configuration?.backgroundColor || '#ffffff' }}>
+    <div className={styles.iconListContainer} style={{ backgroundColor: configuration?.backgroundColor || '#ffffff', position: 'relative' }}>
+      {/* Imagen de fondo de pincelada */}
+      <img
+        src="https://res.cloudinary.com/dwgzidiha/image/upload/v1748366941/Mantis-APP/duc1qs7v20xdm1iz9bsm.png"
+        alt="Pincelada decorativa"
+        className={styles.stainBg}
+      />
 
       <div className={styles.contenedordelsubtitulo}
         dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(configuration?.description) }} />
@@ -18,7 +24,7 @@ const IconListBlock = ({ configuration }) => {
 
 
       <div
-        className={styles.iconListContainer}
+        className={styles.iconListContainerbajo}
 
       >
         <ul className={styles.stainGrid}>

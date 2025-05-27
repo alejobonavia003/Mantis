@@ -1,8 +1,30 @@
 /* Contenedor general */
 .iconListContainer {
-  text-align: center;
+  align-items: center;
   margin: 0 auto;
+  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  max-width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }
+
+.iconListContainerbajo {
+    align-items: center;
+    /* margin: 0 auto; */
+    /* margin-bottom: 100px; */
+    display: flex
+;
+    flex-direction: column;
+    width: 100%;
+
+}
+
 
 .titleBlock {
   text-align: center;
@@ -34,18 +56,19 @@
 }
 
 .heroButton {
-  color: #dfd8c7;
+  color: black;
   padding: 12px 30px;
   margin-bottom: 20px;
   border-radius: 5px;
   text-decoration: none;
   font-size: 1rem;
+  font-weight: 600;
   transition: all 0.3s ease;
   border: 2px solid transparent;
 }
 
 .contenedordelsubtitulo {
-  width: 100%;
+  width: 80%;
   font-size: 1.2rem;
   text-align: center;
   display: flex;
@@ -54,7 +77,7 @@
 
 }
 
-.contenedordelsubtitulo > h3 {
+.contenedordelsubtitulo > h2 {
     width: 80%;
     color: #516f61;
       padding: 50px 0px;
@@ -64,24 +87,34 @@
 .stainGrid {
   display: flex;
   flex-wrap: wrap; /* Los elementos bajan en filas */
-  justify-content: center;
+  justify-content: flex-start; /* Empieza desde la izquierda */
+  align-items: flex-start;
   list-style: none;
   padding: 0;
   margin: 0;
-  gap: 1rem;       /* Espacio entre manchas */
+  gap: .5rem;       /* Espacio entre manchas */
+  width: 70%;
+  position: relative;
+  padding-bottom: 100px;
 }
+
 
 /* Cada li es un contenedor relativo con fondo (imagen) y el contenido centrado */
 .stainItem {
   position: relative;
-  width: 160px;
-  height: 160px;
+  width: 120px;
+  height: 120px;
   background-size: cover; /* Puedes probar con cover para que la imagen se ajuste bien */
   background-position: center;
   background-repeat: no-repeat;
   overflow: hidden;
   transition: transform 0.3s ease;
-  
+  opacity: 0.9;
+}
+
+.stainGrid .stainItem:hover {
+  transform: translateY(-2px) scale(1.03);
+  transition: all 0.2s ease;
 }
 
 
@@ -93,58 +126,120 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 90%;           /* para dejar un margen interno */
-  padding: 0.5rem;
+  padding: 0;
   text-align: center;   /* para centrar el texto */
   box-sizing: border-box;
 }
 
 
 .itemText > p {
-  font-size: 1rem;
+  display: block;
+  font-size: 0.9rem;
   margin-top: 0.5rem;
   overflow: hidden;
+  font-weight: 600;
+  color: #3e4a3e;
+
 }
 
 /* Placeholder para mantener la estructura en responsive */
 .stainPlaceholder {
-  width: 160px;
-  height: 160px;
+    width: 60px;
+    height: 60px;
 }
 
+
+/* Nueva clase para la imagen de fondo */
+.stainBg {
+  position: absolute;
+  left: 80px;
+  top: 44%;
+  transform: translateY(-50%);
+  height: 1000px;
+  z-index: 0;
+  opacity: 0.7;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 0.3s, width 0.3s, top 0.3s;
+  filter: brightness(0) saturate(100%) invert(34%) sepia(8%) saturate(1100%) hue-rotate(90deg) brightness(0.7) contrast(1.2) drop-shadow(0 0 0 #516f61);
+  mix-blend-mode: multiply;
+  
+}
 
 /* ---- Responsivo ---- */
+
+@media (max-width: 1200px) {
+    .stainItem:nth-child(n+19) {
+    display: none;
+  }
+  .stainGrid {
+    width: 80%;
+  }
+}
+@media (max-width: 950px) {
+      .stainItem:nth-child(n+16) {
+    display: none;
+  }
+  .stainBg {
+    width: 130%;
+  }
+}
+@media (max-width: 850px) {
+  .stainBg {
+    width: 150%;
+  }
+    .stainGrid {
+    width: 90%;
+
+  }
+    .stainBg {
+    left: -60px;
+  }
+}
 @media (max-width: 768px) {
+      .stainItem:nth-child(n+15) {
+    display: none;
+  }
+.contenedordelsubtitulo > h3 {
+    width: 100%;
+
+}
+  .stainGrid {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 0px;
+  }
+
   .stainPlaceholder {
-    width: 120px;
-    height: 120px;
+    width: 60px;
+    height: 60px;
+
+  }
+
+  .stainContent{
+    padding: 0;
   }
 
   .stainItem {
-    width: 140px;
-    height: 140px;
-  }
-  .itemText > p {
-    font-size: 0.9rem;
-  }
-
-}
-
-@media (max-width: 480px) {
-  .stainPlaceholder {
     width: 100px;
     height: 100px;
-  }
 
-  .stainItem {
-    width: 120px;
-    height: 120px;
   }
+  .itemText > p {
+    font-size: 0.7rem;
 
-  .itemText > p{
-    font-size: 0.8rem;
   }
-  .stainContent {
-    top: 60%;
+  .stainBg {
+    width: 150%;
+    height: 700px;
+    left: -100px;
+
+    transform: translateY(-50%);
   }
 
 }
+
+
+
+
