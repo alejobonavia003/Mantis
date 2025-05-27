@@ -10,24 +10,17 @@ const IconListBlock = ({ configuration }) => {
 
   return (
     <div className={styles.iconListContainer} style={{ backgroundColor: configuration?.backgroundColor || '#ffffff', position: 'relative' }}>
-      {/* Imagen de fondo de pincelada */}
-      <img
-        src="https://res.cloudinary.com/dwgzidiha/image/upload/v1748366941/Mantis-APP/duc1qs7v20xdm1iz9bsm.png"
-        alt="Pincelada decorativa"
-        className={styles.stainBg}
-      />
-
       <div className={styles.contenedordelsubtitulo}
         dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(configuration?.description) }} />
 
-
-
-
-      <div
-        className={styles.iconListContainerbajo}
-
-      >
+      <div className={styles.iconListContainerbajo}>
         <ul className={styles.stainGrid}>
+          {/* Imagen de fondo de pincelada ahora dentro de la lista de iconos */}
+          <img
+            src="https://res.cloudinary.com/dwgzidiha/image/upload/v1748366941/Mantis-APP/duc1qs7v20xdm1iz9bsm.png"
+            alt="Pincelada decorativa"
+            className={styles.stainBg}
+          />
           {configuration?.items?.map((item, index) => (
             item.text && (
               <li
@@ -45,12 +38,8 @@ const IconListBlock = ({ configuration }) => {
             )
           ))}
           {/* Placeholder para estructura responsive  <li className={styles.stainPlaceholder}></li> */}
-
         </ul>
       </div>
-
-
-
 
       <div className={styles.contenedordelsubtitulo}
         dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(configuration?.description2) }} />
@@ -69,11 +58,7 @@ const IconListBlock = ({ configuration }) => {
           </a>
         )}
       </div>
-
-
     </div>
-
-
   );
 };
 
