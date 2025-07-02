@@ -1,5 +1,6 @@
 .outerContainer {
     padding: 100px;
+    position: relative;
 }
 
 
@@ -10,6 +11,7 @@
   position: relative;
   margin: 0 4rem;
   padding: 4rem 0 0 0;
+  z-index: 1;
 
   }
 
@@ -130,11 +132,46 @@
   .cardButton:hover {
     opacity: 0.9;
   }
-  
-  @media (max-width: 600px) {
-    .outerContainer {
+
+  .pinseladaIzquierda {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 220px;
+    opacity: 1;
+    z-index: 0;
+    pointer-events: none;
+    user-select: none;
+}
+
+
+.pinseladaDerecha {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%) scaleX(-1) scaleY(-1);
+  width: 220px;
+  opacity: 1;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (max-width: 900px) {
+  .pinseladaIzquierda {
+    width: 120px;
+  }
+  .pinseladaDerecha {
+    width: 120px;
+  }
+      .outerContainer {
       padding: 10px; /* Reducción de padding para mejor ajuste */
     }
+}
+
+  @media (max-width: 600px) {
+
   
     .pricingSection {
       margin: 1rem;

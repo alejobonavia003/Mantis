@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from "./styles/pricingBlock.module.css";
 import DOMPurify from 'dompurify';
-import styles2 from './styles/faqBlock.module.css';
+import styles2 from './styles/faqBlock.module.css';//
 
 const PricingBlock = ({ configuration }) => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -13,8 +13,19 @@ const PricingBlock = ({ configuration }) => {
 
 
   return (
-    <div className={styles.outerContainer} style={{ backgroundColor: configuration?.backgroundColor || '#ffffff' }}>
-      <div className={styles.pricingSection} style={{ backgroundColor: configuration?.backgroundColor || '#ffffff' }}>
+    <div className={styles.outerContainer} style={{ backgroundColor: configuration?.backgroundColor || '#ffffff', position: 'relative' }}>
+      {/* Manchas decorativas de pincelada */}
+      <img
+        src="/pinseladas.png"
+        alt="Pincelada izquierda"
+        className={styles.pinseladaIzquierda}
+      />
+      <img
+        src="/pinseladas.png"
+        alt="Pincelada derecha"
+        className={styles.pinseladaDerecha}
+      />
+      <div className={styles.pricingSection} style={{ backgroundColor: configuration?.backgroundColor || '#ffffff', position: 'relative' }}>
         {/* Círculo decorativo superior */}
         <div className={styles.decorationCircle}>
           <img

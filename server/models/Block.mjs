@@ -16,7 +16,13 @@ const Block = sequelize.define('Block', {
     allowNull: false,
     field: 'order_index'
   },
+    fileName: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    field: 'fileName'
+  },
   page: DataTypes.STRING
+
 }, {
   tableName: 'blocks',
   timestamps: true,

@@ -7,6 +7,28 @@ const router = express.Router();
 // Middleware de autenticación (debes implementarlo)
 // router.use(authMiddleware);
 
+const typeToFileName = {
+  hero: 'HeroBlock.jsx',
+  hero2: 'HeroBlock2.jsx',
+  iconList: 'IconListBlock.jsx',
+  pricingCards: 'PricingBlock.jsx',
+  psychologists: 'PsychologistsBlock.jsx',
+  psychologistsCarousel: 'PsychologistsCarouselBlock.jsx',
+  productsPromotion: 'ProductsBlock.jsx',
+  terapiaDijital: 'TurnosBlock.jsx',
+  questionBlock: 'FaqBlock.jsx',
+  imageList: 'ImageListBlock.jsx',
+  therapy: 'CuadranteBlock.jsx',
+  publicaciones: 'PublicacionesBlock.jsx',
+  comentarios: 'ComentariosBlock.jsx',
+  pasoapaso: 'PasoAPasoBlock.jsx',
+  preguntaslargas: 'PreguntasLargasBlock.jsx',
+  roldelterapeuta: 'RolDelTerapeutaBlock.jsx',
+  materialRequest: 'MaterialRequestBlock.jsx',
+  imageQuadrants: 'QuadranteImageBlock.jsx'
+  // Agrega aquí todos los tipos de bloque que uses
+};
+
 // GET: Listar bloques por página
 router.get('/', async (req, res) => {
   try {
@@ -53,7 +75,8 @@ router.post('/', async (req, res) => {
       type,
       page,
       configuration,
-      orderIndex: newOrderIndex
+      orderIndex: newOrderIndex,
+      fileName
     }, { transaction });
 
     await transaction.commit();

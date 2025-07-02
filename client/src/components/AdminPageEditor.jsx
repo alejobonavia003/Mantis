@@ -37,6 +37,8 @@ const PageEditor = ({ page }) => {
     loadPageBlocks();
   }, [page]);
 
+
+
   // Eliminar bloque
   const handleDeleteBlock = async (blockId) => {
     try {
@@ -123,20 +125,36 @@ const handleBlockSelect = (block) => {
         <SortableList items={pageBlocks} onDragEnd={handleDragEnd}>
           <div className="blocksContainer">
             {pageBlocks.map((block) => (
-              <SortableBlock
-                key={block.id}
-                block={block}
-                selectedBlock={selectedBlock}
-                handleBlockSelect={handleBlockSelect} // Usar la nueva función
-                handleDeleteBlock={handleDeleteBlock}
-              />
+              <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }} key={block.id}>
+                <SortableBlock
+                  block={block}
+                  selectedBlock={selectedBlock}
+                  handleBlockSelect={handleBlockSelect}
+                  handleDeleteBlock={handleDeleteBlock}
+                />
+              </div>
             ))}
           </div>
         </SortableList>
 
         {selectedBlock && (
           <div className="configEditor">
-            <h3>Editando: {selectedBlock.type}</h3>
+            <h3>ESTAMOS VIENDO: </h3>
+                {/* Círculo de información */}
+                <div
+                  className="infoCircle"
+                  tabIndex={0}
+                >
+                  i
+                  {/* Tooltip */}
+                  <div className="infoTooltip">
+                    <strong>Nombre:</strong> {selectedBlock.type} <br />
+                    <strong>ID:</strong> {selectedBlock.id} <br />
+                    <strong>Archivo:</strong> {selectedBlock.fileName || "CARGAR EN LA BASE DE DATOS EL NOMBRE DE ESTE ARCHIVO"} <br />
+                    <strong>Creado:</strong> {selectedBlock.createdAt ? new Date(selectedBlock.createdAt).toLocaleString() : '-'} <br />
+                    <strong>Modificado:</strong> {selectedBlock.updatedAt ? new Date(selectedBlock.updatedAt).toLocaleString() : '-'}
+                  </div>
+                </div>
             <BlockConfigurator
               block={selectedBlock}
               onUpdate={(newConfig) => handleBlockUpdate(selectedBlock.id, newConfig)}
@@ -149,3 +167,4 @@ const handleBlockSelect = (block) => {
 };
 
 export default PageEditor;
+
