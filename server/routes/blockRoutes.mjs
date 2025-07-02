@@ -56,6 +56,7 @@ router.post('/', async (req, res) => {
   
   try {
     const { type, page = 'home', configuration = {} } = req.body;
+    const fileName = typeToFileName[type] || null;
 
     if (!type) {
       await transaction.rollback();

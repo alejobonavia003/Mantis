@@ -19,8 +19,8 @@ router.post('/', async (req, res) => {
     const { nombre, apellidos, email, edad, residencia, disponibilidad, tipoSesion, frecuencia, conocio, dudas, telefono, horario, motivo } = req.body;
 
     // Lista de correos a los que se enviará el mensaje
-    //const recipients = ["macasanti23@gmail.com", "licflorenciavisconti@gmail.com "];
-    const recipients = ["bonaviaalejo@gmail.com", "alejobonavia003i@gmail.com "];
+    const recipients = ["macasanti23@gmail.com", "licflorenciavisconti@gmail.com "];
+    //const recipients = ["bonaviaalejo@gmail.com", "alejobonavia003i@gmail.com "];
 
     // Crear el contenido HTML del correo
     const htmlContent = `

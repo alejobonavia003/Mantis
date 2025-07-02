@@ -23,67 +23,94 @@ const ProductsPromotionBlock = ({ configuration }) => {
     fetchProducts();
   }, [configuration?.maxItems, apiUrl]);
 
+  // Utilidad para detectar si un texto enriquecido está realmente vacío
+  const isRichTextEmpty = (html) => {
+    if (!html) return true;
+    // Quita espacios, saltos de línea y minúsculas
+    const clean = html.replace(/\s|\n|\r/g, '').toLowerCase();
+    return (
+      clean === '' ||
+      clean === '<p><br></p>' ||
+      clean === '<p></p>' ||
+      clean === '<p><br/></p>' ||
+      clean === '<p><br /></p>'
+    );
+  };
+
   return (
     <div
       className={styles.outerContainer}
     >
       <div className={styles.productsSection}>
         {/* Título */}
-        <div className={styles.productTitle} dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(configuration?.titulo)}}></div>
+        {configuration?.titulo && (
+          <div className={styles.productTitle} dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(configuration.titulo)}}></div>
+        )}
 
-        
-
-
-        <div className={styles.topContent}>
-                  { /* Descripción con soporte para rich text */}
-          <div 
-            className={styles.topText}
-            dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(configuration.texto1),
-            }}
-          />
-                    { /* Imagen*/}
-          <div className={styles.topImage}>
-            <img
-              src={configuration.image}
-                className={styles.imageLateral}
+        {/* Top Content solo si hay texto1 o imagen */}
+        {((!isRichTextEmpty(configuration?.texto1)) || configuration?.image) && (
+          <div className={styles.topContent}>
+            {/* Descripción con soporte para rich text */}
+            {!isRichTextEmpty(configuration?.texto1) && (
+              <div 
+                className={styles.topText}
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(configuration.texto1),
+                }}
               />
-          </div>
-        </div>
-
-
-        <div className={styles.mediumContent}>
-          <div 
-            className={styles.mediumText2}
-            dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(configuration.texto2),
-            }}
-          />
-
-          <div className={styles.cuadranProduct}>
-            <div className={styles.leftColumn}>
-                <p
-                    className={styles.text}
-                    dangerouslySetInnerHTML={{
-                      __html: DOMPurify.sanitize(configuration.texto3),
-                    }}
+            )}
+            {/* Imagen */}
+            {configuration?.image && (
+              <div className={styles.topImage}>
+                <img
+                  src={configuration.image}
+                  className={styles.imageLateral}
                 />
-            </div>
+              </div>
+            )}
+          </div>
+        )}
 
-            <div className={styles.rightColumn}>
-                <div className={styles.recuadro}>
+        {/* Medium Content solo si hay texto2, texto3 o texto4 */}
+        {((!isRichTextEmpty(configuration?.texto2)) )&& (
+          <div className={styles.mediumContent}>
+            {!isRichTextEmpty(configuration?.texto2) && (
+              <div 
+                className={styles.mediumText2}
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(configuration.texto2),
+                }}
+              />
+            )}
+
+            {/* Cuadrante solo si hay texto3 o texto4 */}
+            {((!isRichTextEmpty(configuration?.texto3)) || (!isRichTextEmpty(configuration?.texto4))) && (
+              <div className={styles.cuadranProduct}>
+                {!isRichTextEmpty(configuration?.texto3) && (
+                  <div className={styles.leftColumn}>
                     <p
+                      className={styles.text}
                       dangerouslySetInnerHTML={{
-                        __html: DOMPurify.sanitize(configuration.texto4),
+                        __html: DOMPurify.sanitize(configuration.texto3),
                       }}
                     />
-                </div>
-            </div>
-      </div>
-
-
-
-      </div>
+                  </div>
+                )}
+                {!isRichTextEmpty(configuration?.texto4) && (
+                  <div className={styles.rightColumn}>
+                    <div className={styles.recuadro}>
+                      <p
+                        dangerouslySetInnerHTML={{
+                          __html: DOMPurify.sanitize(configuration.texto4),
+                        }}
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        )}
 
 
         {/* Tarjetas de productos */}
