@@ -48,7 +48,7 @@ const ProductsPromotionBlock = ({ configuration }) => {
         )}
 
         {/* Top Content solo si hay texto1 o imagen */}
-        {((!isRichTextEmpty(configuration?.texto1)) || configuration?.image) && (
+        {((!isRichTextEmpty(configuration?.texto1))) && (
           <div className={styles.topContent}>
             {/* Descripción con soporte para rich text */}
             {!isRichTextEmpty(configuration?.texto1) && (
