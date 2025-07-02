@@ -1,5 +1,6 @@
 .outerContainer {
   padding: 50px;
+  position: relative;
 }
 
 .pricingSection {
@@ -218,7 +219,7 @@
 }
 
 /* ==================================================
-   ESTILOS RESPONSIVOS
+   ESTILOS RESPONSIVOS//
 ================================================== */
 @media (max-width: 768px) {
   .outerContainer {
@@ -262,5 +263,39 @@
   .cardActions {
     flex-direction: column;
     gap: 0.5rem;
+  }
+}
+
+.pinseladaIzquierda {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%) scaleY(-1);
+  width: 220px;
+  opacity: 1;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  display: none;
+}
+
+.pinseladaDerecha {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%) scaleX(-1) ;
+  width: 220px;
+  opacity: 1;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (max-width: 900px) {
+  .pinseladaIzquierda {
+    width: 120px;
+  }
+  .pinseladaDerecha {
+    width: 120px;
   }
 }

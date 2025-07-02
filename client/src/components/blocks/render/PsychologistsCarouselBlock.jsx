@@ -24,6 +24,17 @@ const PsychologistsCarouselBlock = ({ configuration }) => {
       className={styles.outerContainer} 
       style={{ backgroundColor: configuration?.backgroundColor || '#ffffff' }}
     >
+      {/* Manchas decorativas de pincelada */}
+      <img
+        src="/pinseladas.png"
+        alt="Pincelada izquierda"
+        className={styles.pinseladaIzquierda}
+      />
+      <img
+        src="/pinseladas.png"
+        alt="Pincelada derecha"
+        className={styles.pinseladaDerecha}
+      />
       <div className={styles.pricingSection}>
         {/* Círculo decorativo superior con icono */}
         <div className={styles.decorationCircle}>
