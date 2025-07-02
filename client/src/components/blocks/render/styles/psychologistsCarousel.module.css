@@ -281,7 +281,7 @@
 
 .pinseladaDerecha {
   position: absolute;
-  right: -30;
+  right: 0;
   top: 50%;
   transform: translateY(-50%) scaleX(-1) ;
   width: 220px;
@@ -297,5 +297,6 @@
   }
   .pinseladaDerecha {
     width: 120px;
+    right: -30;
   }
 }

@@ -135,7 +135,7 @@
 
   .pinseladaIzquierda {
     position: absolute;
-    left: -30;
+    left: 0;
     top: 50%;
     transform: translateY(-50%);
     width: 220px;
@@ -162,6 +162,7 @@
 @media (max-width: 900px) {
   .pinseladaIzquierda {
     width: 120px;
+    left: -30;
   }
   .pinseladaDerecha {
     width: 120px;
