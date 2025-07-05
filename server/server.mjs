@@ -13,6 +13,7 @@ import psychologistRoutes from './routes/psychologistRoutes.mjs';
 import ComentariosRoutes from './routes/comentariosRoute.mjs';
 import metricsRoutes from './routes/metricsRoutes.mjs';
 import reviewRoutes from './routes/reviewRoutes.mjs';
+import documentacionRoutes from './routes/documentacionRoutes.mjs';
 import { connectDB, syncDB } from './config/db.mjs';
 
 
@@ -44,7 +45,7 @@ app.use(express.static(path.join(__dirname, "/assets")));
 
 
 
-//comprobar conexion con base de datos
+//comprobar conexion con base de datos/
 sequelize
   .authenticate()
   .then(() => console.log("✅ Conectado a PostgreSQL en Railway"))
@@ -61,6 +62,7 @@ app.use('/api/psychologists', psychologistRoutes);
 app.use('/api/reviews', ComentariosRoutes);
 app.use('/api/metrics', metricsRoutes);
 app.use('/api', reviewRoutes);
+app.use('/api/documentacion', documentacionRoutes); 
 
 
 // Ruta catch-all para React Router

@@ -148,7 +148,7 @@ const Admin = () => {
               </>
             )}
 
-            {activeTab === "gallery" && (
+            {activeTab === "gallery" && (//
               <>
                 <h2 className="adminTitle">Editor de Galería</h2>
 
@@ -160,7 +160,7 @@ const Admin = () => {
                     <h3>Imagen Seleccionada</h3>
                     <img src={selectedImage.url} alt="Seleccionada" />
                   </div>
-                )}
+                )}//
 
             <h3 className="adminTitle">Editor de Logo</h3>
 
@@ -185,6 +185,39 @@ const Admin = () => {
             <h2 className="adminTitle">Metricas</h2>
             <MetricsPanel />
             </div>
+            )}
+
+            {activeTab === "documentacion" && (
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: 40 }}>
+                <h2 className="adminTitle">Documentación</h2>
+                <p style={{ maxWidth: 500, textAlign: 'center', marginBottom: 24, color: '#444' }}>
+                  <b>Nota:</b> La forma correcta de editar la documentación es cargarla en un editor de texto markdown como <b>Obsidian</b> o <b>Notion</b> y luego, una vez editada, volverla a cargar en <code>src/doc</code> para mantener todo actualizado.
+                </p>
+                <div style={{ display: 'flex', gap: 20, marginTop: 10 }}>
+                  <button
+                    style={{ padding: '12px 32px', fontSize: 18 }}
+                    onClick={async () => {
+                      try {
+                        const response = await axios.get(`${apiUrl}api/documentacion/manual`, {
+                          responseType: 'blob',
+                        });
+                        const url = window.URL.createObjectURL(new Blob([response.data]));
+                        const link = document.createElement('a');
+                        link.href = url;
+                        link.setAttribute('download', 'manual.md');
+                        document.body.appendChild(link);
+                        link.click();
+                        link.remove();
+                      } catch (err) {
+                        alert('Error al descargar el archivo .md');
+                      }
+                    }}
+                    className="downloadButton"
+                  >
+                    Descargar en Documentacion
+                  </button>
+                </div>
+              </div>
             )}
           </div>
         </div>
