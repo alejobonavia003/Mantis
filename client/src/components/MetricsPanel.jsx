@@ -24,20 +24,64 @@ ChartJS.register(
   Legend
 );
 
+
 const MetricsPanel = () => {
- 
   const [metrics, setMetrics] = useState({ visits: [], request: [], order: [] });
+  const [psychologists, setPsychologists] = useState([]);
+  const [showPsList, setShowPsList] = useState(false);
+  const [selectedPs, setSelectedPs] = useState(null);
+  const [reviewLink, setReviewLink] = useState(null);
+  const [reviewExpiresAt, setReviewExpiresAt] = useState(null);
+  const [reviewLoading, setReviewLoading] = useState(false);
+  const [reviewError, setReviewError] = useState('');
+  const [reviewTimeoutId, setReviewTimeoutId] = useState(null);
+  const apiUrl = import.meta.env.VITE_API_URL;
+
 
   useEffect(() => {
     const fetchMetrics = async () => {
       const response = await axios.get('/api/metrics');
-      //console.log('Datos recibidos del backend:', response.data);
-      //console.log(response.data);
       setMetrics(response.data);
     };
-
     fetchMetrics();
   }, []);
+
+  // Cargar psicólogos para el generador de links
+  useEffect(() => {
+    if (!showPsList) return;
+    const fetchPs = async () => {
+      try {
+        const res = await axios.get(`${apiUrl}api/psychologists`);
+        setPsychologists(res.data);
+      } catch (err) {
+        setReviewError('Error al cargar psicólogos');
+      }
+    };
+    fetchPs();
+  }, [showPsList]);
+  // Generar link de reseña para psicólogo
+  const handleGenerateReviewLink = async (psychologistId) => {
+    setReviewLoading(true);
+    setReviewError('');
+    setReviewLink(null);
+    setReviewExpiresAt(null);
+    if (reviewTimeoutId) clearTimeout(reviewTimeoutId);
+    try {
+      const res = await axios.post(`${apiUrl}api/psychologists/${psychologistId}/review-link`);
+      setReviewLink(res.data.link);
+      setReviewExpiresAt(res.data.expiresAt);
+      // Limpiar el link después de 74 horas
+      const timeout = setTimeout(() => {
+        setReviewLink(null);
+        setReviewExpiresAt(null);
+      }, 74 * 60 * 60 * 1000);
+      setReviewTimeoutId(timeout);
+    } catch (err) {
+      setReviewError('Error generando link de reseña');
+    } finally {
+      setReviewLoading(false);
+    }
+  };
 
   const markAsRead = async (type, id) => {
     try {
@@ -87,6 +131,55 @@ const MetricsPanel = () => {
 
   return (
     <div className="metrics-panel">
+      {/* Generador de links de reseña */}
+      <div style={{ marginBottom: 24 }}>
+        <button
+          className="metrics-panel__review-link-btn"
+          style={{ marginBottom: 8 }}
+          onClick={() => setShowPsList((v) => !v)}
+        >
+          {showPsList ? 'Ocultar generador de link de reseña' : 'Generar link de reseña'}
+        </button>
+        {showPsList && (
+          <div className="metrics-panel__review-link-box">
+            <label htmlFor="ps-select" className="metrics-panel__review-link-label">Selecciona un psicólogo:</label>
+            <select
+              id="ps-select"
+              className="metrics-panel__review-link-select"
+              value={selectedPs || ''}
+              onChange={e => setSelectedPs(e.target.value)}
+            >
+              <option value="">-- Selecciona --</option>
+              {psychologists.map(ps => (
+                <option key={ps.id} value={ps.id}>{ps.nombre}</option>
+              ))}
+            </select>
+            <button
+              className="metrics-panel__review-link-btn"
+              onClick={() => selectedPs && handleGenerateReviewLink(selectedPs)}
+              disabled={!selectedPs || reviewLoading}
+            >
+              {reviewLoading ? 'Generando...' : 'Generar link'}
+            </button>
+            {reviewError && <div className="metrics-panel__review-link-error">{reviewError}</div>}
+            {reviewLink && (
+              <div style={{ marginTop: 12 }}>
+                <input
+                  type="text"
+                  className="metrics-panel__review-link-input"
+                  value={reviewLink}
+                  readOnly
+                  onFocus={e => e.target.select()}
+                />
+                <span className="metrics-panel__review-link-expiry">
+                  Este link se eliminará automáticamente en 74 horas.<br />
+                  Expira: {new Date(reviewExpiresAt).toLocaleString()}
+                </span>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
       <div>
         <h3 className="metrics-panel__subtitle">Solicitudes de sesión</h3>
         <table className="metrics-panel__table">

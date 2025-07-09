@@ -80,4 +80,88 @@
     }
   }
 
+  // === Estilos para el generador de links de reseña ===
+  &__review-link-box {
+    margin-top: variables.$spacing-small;
+    background: variables.$color-primary-alt;
+    border: 1px solid variables.$color-mantis-2;
+    border-radius: variables.$border-radius;
+    padding: variables.$spacing-small;
+    box-shadow: 0 1px 4px rgba(81, 111, 97, 0.08);
+    text-align: left;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__review-link-label {
+    font-size: variables.$font-size-small;
+    color: variables.$color-mantis-1;
+    font-weight: bold;
+    margin-bottom: variables.$spacing-mini;
+    display: block;
+  }
+
+  &__review-link-select {
+    padding: variables.$spacing-extrasmall variables.$spacing-small;
+    border-radius: variables.$border-radius;
+    border: 1px solid variables.$color-mantis-2;
+    background: variables.$color-white;
+    color: variables.$color-mantis-1;
+    font-size: variables.$font-size-small;
+    margin: 0 variables.$spacing-mini;
+    min-width: 120px;
+  }
+
+  &__review-link-btn {
+    background-color: variables.$color-mantis-2;
+    color: variables.$color-white;
+    border: none;
+    padding: variables.$spacing-extrasmall variables.$spacing-small;
+    border-radius: variables.$border-radius;
+    font-size: variables.$font-size-small;
+    cursor: pointer;
+    margin-left: variables.$spacing-mini;
+    transition: background 0.2s;
+    &:hover {
+      background-color: darken(variables.$color-mantis-2, 10%);
+    }
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  &__review-link-input {
+    width: 100%;
+    margin-top: variables.$spacing-mini;
+    padding: variables.$spacing-extrasmall;
+    border-radius: variables.$border-radius;
+    border: 1px solid variables.$color-mantis-2;
+    font-size: variables.$font-size-small;
+    background: variables.$color-white;
+    color: variables.$color-mantis-1;
+  }
+
+  &__review-link-expiry {
+    font-size: variables.$font-size-xsmall;
+    color: variables.$color-mantis-2;
+    margin-top: variables.$spacing-mini;
+    display: block;
+  }
+
+  &__review-link-error {
+    color: #b94a48;
+    background: #fbeeea;
+    border: 1px solid #e6b8b8;
+    border-radius: variables.$border-radius;
+    padding: variables.$spacing-mini variables.$spacing-small;
+    margin-top: variables.$spacing-mini;
+    font-size: variables.$font-size-xsmall;
+    text-align: left;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
 }

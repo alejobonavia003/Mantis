@@ -27,7 +27,7 @@ const AdminPsRegister = () => {
     loadPsychologists();
   }, []);
 
-  // Cargar reseñas de un psicólogo
+  // Cargar reseñas de un psicólogo. 
   const fetchReviews = async (psychologistId) => {
     try {
       const response = await axios.get(`${apiUrl}api/psychologists/${psychologistId}/reviews`);
