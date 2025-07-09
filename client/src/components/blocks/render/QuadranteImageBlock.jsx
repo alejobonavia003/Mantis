@@ -26,12 +26,20 @@ const QuadranteImageBlock = ({ configuration }) => {
         {/* Columna de Imagen */}
         <div className={styles.imageColumn}>
           {configuration.image && (
+            <div className={styles.imageContainer}>
             <img
               src={configuration.image}
               alt="Ilustración"
               className={styles.image}
             />
+            <img
+              src="/flecha.png"
+              alt="Flecha decorativa"
+              className={styles.flechaImg}
+            />
+          </div>
           )}
+          
         </div>
 
         {/* Columna de Cuadrantes */}
@@ -41,6 +49,7 @@ const QuadranteImageBlock = ({ configuration }) => {
             <div
               className={styles.cuadranteBox}
               ref={el => (cuadrantesRef.current[0] = el)}
+              style={{ backgroundColor: '#75aca8' }}
             >
               <div
                 dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(configuration.cuadrante1 || '') }}
@@ -49,6 +58,7 @@ const QuadranteImageBlock = ({ configuration }) => {
             <div
               className={styles.cuadranteBox}
               ref={el => (cuadrantesRef.current[1] = el)}
+              style={{ backgroundColor: '#E897A0' }}
             >
               <div
                 dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(configuration.cuadrante2 || '') }}

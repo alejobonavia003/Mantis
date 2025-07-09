@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './styles/iconListBlock.module.css';
-import DOMPurify from 'dompurify';
+import DOMPurify from 'dompurify';//
 
 const IconListBlock = ({ configuration }) => {
   const getIconForIndex = (index) => {
@@ -11,15 +11,34 @@ const IconListBlock = ({ configuration }) => {
   return (
     <div className={styles.iconListContainer} style={{ backgroundColor: configuration?.backgroundColor || '#ffffff', position: 'relative' }}>
       <div className={styles.contenedordelsubtitulo}
+        style={{ backgroundColor: 'transparent' }}
         dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(configuration?.description) }} />
+      <div className={styles.contenedordelsubtitulo}
+        style={{ backgroundColor: 'transparent' }}
+        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(configuration?.description2) }} />
+
 
       <div className={styles.iconListContainerbajo}>
+        {/* Reemplazo de la lista de iconos por una imagen */}
+        <img
+          src="/iconList.png"
+          alt="Lista de iconos decorativa"
+          className={styles.iconListImg}
+        />
+        {/*
         <ul className={styles.stainGrid}>
-          {/* Imagen de fondo de pincelada ahora dentro de la lista de iconos */}
           <img
             src="https://res.cloudinary.com/dwgzidiha/image/upload/v1748366941/Mantis-APP/duc1qs7v20xdm1iz9bsm.png"
             alt="Pincelada decorativa"
             className={styles.stainBg}
+            style={{
+              mixBlendMode: 'multiply',
+              width: '180%',
+              left: '-10%',
+              maxWidth: 'none',
+              minWidth: '1200px',
+              zIndex: 0,
+            }}
           />
           {configuration?.items?.map((item, index) => (
             item.text && (
@@ -37,14 +56,12 @@ const IconListBlock = ({ configuration }) => {
               </li>
             )
           ))}
-          {/* Placeholder para estructura responsive  <li className={styles.stainPlaceholder}></li> */}
         </ul>
+        */}
       </div>
 
-      <div className={styles.contenedordelsubtitulo}
-        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(configuration?.description2) }} />
-
-      <div className={styles.contenedordelsubtitulo}
+            <div className={styles.contenedordelsubtitulo}
+        style={{ backgroundColor: 'transparent' }}
         dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(configuration?.description3) }} />
 
       <div className={styles.buttonContainer}>
@@ -52,12 +69,13 @@ const IconListBlock = ({ configuration }) => {
           <a
             href={configuration?.buttonUrl1 || '#'}
             className={styles.heroButton}
-            style={{ backgroundColor: configuration?.buttonColor1 || '#007bff' }}
+            style={configuration?.buttonColor1 ? { backgroundColor: configuration.buttonColor1 } : {}}
           >
             {configuration.buttonText1}
           </a>
         )}
       </div>
+      <hr className={styles.separatorLine} />
     </div>
   );
 };

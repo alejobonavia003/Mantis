@@ -2,7 +2,6 @@
 .iconListContainer {
   align-items: center;
   margin: 0 auto;
-  margin-bottom: 100px;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -15,7 +14,9 @@
     margin-right: 0 !important;
     left: 0 !important;
     right: 0 !important;
-    overflow-x: hidden;
+    /*overflow-wrap: normal;*/
+    overflow: clip;
+
 }
 
 .iconListContainerbajo {
@@ -78,7 +79,18 @@
   display: flex;
   align-items: center;
   justify-content: center;  
+  background: transparent !important;
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+  padding-bottom: 0 !important;
+  padding-top: 0 !important;
+}
 
+.separatorLine {
+  width: 80%;
+  border: none;
+  border-top: 1.5px solid #e0e0e0;
+  margin: 18px auto 24px auto;
 }
 
 .contenedordelsubtitulo > h2 {
@@ -156,7 +168,7 @@
 /* Nueva clase para la imagen de fondo */
 .stainBg {
   position: absolute;
-  left: 80px;
+  left: -10%;
   top: 44%;
   transform: translateY(-50%);
   height: 1000px;
@@ -165,9 +177,11 @@
   pointer-events: none;
   user-select: none;
   transition: opacity 0.3s, width 0.3s, top 0.3s;
-  filter: brightness(0) saturate(100%) invert(34%) sepia(8%) saturate(1100%) hue-rotate(90deg) brightness(0.7) contrast(1.2) drop-shadow(0 0 0 #516f61);
+  filter: brightness(0) saturate(100%) invert(67%) sepia(13%) saturate(1000%) hue-rotate(120deg) brightness(0.9) contrast(1.2) drop-shadow(0 0 0 #75aca8);
   mix-blend-mode: multiply;
-  
+  width: 180%;
+  max-width: none;
+  min-width: 1200px;
 }
 
 /* ---- Responsivo ---- */
@@ -181,11 +195,13 @@
   }
 }
 @media (max-width: 950px) {
-      .stainItem:nth-child(n+16) {
+  .stainItem:nth-child(n+16) {
     display: none;
   }
   .stainBg {
-    width: 130%;
+    width: 130% !important;
+    left: -15% !important;
+    min-width: 700px !important;
   }
 }
 @media (max-width: 850px) {
@@ -209,10 +225,8 @@
 
 }
   .stainGrid {
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    gap: 0px;
+    width: 100% !important;
+    justify-content: center !important;
   }
 
   .stainPlaceholder {
@@ -235,11 +249,10 @@
 
   }
   .stainBg {
-    width: 150%;
-    height: 800px;
-    left: 10px;
-
-    transform: translateY(-50%);
+    width: 110% !important;
+    left: 0 !important;
+    min-width: 0 !important;
+    height: 500px !important;
   }
 }
 
@@ -253,6 +266,13 @@
     right: 0 !important;
     overflow-x: hidden;
   }
+}
+
+.iconListImg {
+  width: 100%;
+  max-width: 1000px;
+  display: block;
+  margin: 30px auto;
 }
 
 
