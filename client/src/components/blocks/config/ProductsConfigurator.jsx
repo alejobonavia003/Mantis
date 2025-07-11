@@ -5,6 +5,7 @@ import styles from '../render/styles/configuratorBlock.module.css';
 
 const ProductsPromotionConfigurator = ({ config, onChange }) => {
   const [showGallery, setShowGallery] = useState(false);
+  const [showGallery2, setShowGallery2] = useState(false);
 
   const handleChange = (field, value) => {
     onChange(field, value);
@@ -13,6 +14,10 @@ const ProductsPromotionConfigurator = ({ config, onChange }) => {
   const handleSelectImage = (image) => {
     handleChange('image', image.url);
     setShowGallery(false);
+  };
+  const handleSelectImage2 = (image) => {
+    handleChange('image2', image.url);
+    setShowGallery2(false);
   };
 
   return (
@@ -56,6 +61,31 @@ const ProductsPromotionConfigurator = ({ config, onChange }) => {
         {config?.image && (
           <div className={styles.imagePreview}>
             <img src={config.image} alt="Previsualización del icono" />
+          </div>
+        )}
+      </label>
+
+      <label className={styles.label}>
+        imagen2:
+        <div className={styles.imageInputContainer}>
+          <input
+            type="text"
+            value={config?.image2 || ''}
+            onChange={(e) => handleChange('image2', e.target.value)}
+            placeholder="URL de la imagen"
+            className={styles.input}
+          />
+          <button
+            type="button"
+            onClick={() => setShowGallery2(!showGallery2)}
+            className={styles.galleryButton}
+          >
+            {showGallery2 ? 'Cerrar Galería' : 'Abrir Galería'}
+          </button>
+        </div>
+        {config?.image2 && (
+          <div className={styles.imagePreview}>
+            <img src={config.image2} alt="Previsualización del icono 2" />
           </div>
         )}
       </label>
@@ -128,6 +158,11 @@ const ProductsPromotionConfigurator = ({ config, onChange }) => {
       {showGallery && (
         <div className={styles.galleryModal}>
           <ImageGallery onSelectImage={handleSelectImage} />
+        </div>
+      )}
+      {showGallery2 && (
+        <div className={styles.galleryModal}>
+          <ImageGallery onSelectImage={handleSelectImage2} />
         </div>
       )}
     </>

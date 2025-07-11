@@ -26,7 +26,7 @@ const PricingBlock = ({ configuration }) => {
         className={styles.pinseladaDerecha}
       />
       <div className={styles.pricingSection} style={{ backgroundColor: configuration?.backgroundColor || '#ffffff', position: 'relative' }}>
-        {/* Círculo decorativo superior */}
+        {/* Círculo decorativo superior. */}
         <div className={styles.decorationCircle}>
           <img
             src={configuration?.image || 'placeholder.jpg'}

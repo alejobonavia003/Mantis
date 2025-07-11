@@ -28,11 +28,14 @@ const PublicacionesBlock = ({ configuration }) => {
   );
 
   return (
-    <div className={styles.publicacionesContainer}>
+    <div
+      className={styles.publicacionesContainer}
+      style={configuration.backgroundColor ? { backgroundColor: configuration.backgroundColor } : {}}
+    >
       {/* Título */}
       {title && <h2 className={styles.title}>{title}</h2>}
 
-      {/* Fila con 5 imágenes */}
+      {/* Fila con 5 imágenes. */}
       <div className={styles.postsRow}>
         {posts.map((post, index) => (
           <a

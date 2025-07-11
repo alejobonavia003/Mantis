@@ -156,7 +156,6 @@
   z-index: 0;
   pointer-events: none;
   user-select: none;
-  display: none;
 }
 
 @media (max-width: 900px) {
@@ -168,7 +167,7 @@
     width: 120px;
   }
       .outerContainer {
-      padding: 10px; /* Reducción de padding para mejor ajuste */
+      padding: 10px; /* Reducción de padding para mejor ajuste. */
     }
 }
 

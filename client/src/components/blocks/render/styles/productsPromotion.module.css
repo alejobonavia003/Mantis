@@ -1,3 +1,88 @@
+lateralImage2/* Imagen lateral izquierda (image2) */
+.lateralImage2Container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+  max-width: 260px;
+  margin-right: 2rem;
+}
+
+.lateralImage2 {
+  max-width: 280px;
+  width: 100%;
+  height: auto;
+
+}
+
+@media (max-width: 900px) {
+  .lateralImage2Container {
+    margin-right: 0;
+    min-width: 100px;
+    max-width: 120px;
+    display: none;
+  }
+  .lateralImage2 {
+    max-width: 100px;
+    border-radius: 10px;
+  }
+}
+/* Layout para productos con imagen lateral */
+.productsWithImageRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  width: 100%;
+  margin: 2rem 0 2.5rem 0;
+}
+
+/* Layout para solo productos (sin imagen) */
+.productsOnlyRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 2rem 0 2.5rem 0;
+}
+
+/* Contenedor de la imagen lateral */
+.lateralImageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-width: 220px;
+  max-width: 320px;
+  padding-left: 1.5rem;
+}
+
+/* Imagen lateral decorativa */
+.lateralImage {
+  max-width: 260px;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 900px) {
+  .productsWithImageRow, .productsOnlyRow {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .lateralImageContainer {
+    padding-left: 0;
+    min-width: 120px;
+    max-width: 180px;
+    display: none;
+  }
+  .lateralImage {
+    max-width: 140px;
+    border-radius: 12px;
+  }
+}
 .outerContainer {
     padding: 2rem;
   }
@@ -125,6 +210,7 @@
     /* align-content: center; */
     flex-wrap: nowrap;
     justify-content: center;
+    align-items: center;
   }
   
   /* Cada tarjeta */
@@ -198,6 +284,8 @@
   /* Botón principal */
   .mainButtonContainer {
     margin-top: 2rem;
+    display: flex;
+    justify-content: center;
   }
   
   .mainButton {
@@ -259,6 +347,7 @@
       flex-wrap: wrap; /* Permitir que las tarjetas se ajusten */
       gap: 1rem;
       justify-content: center;
+      align-items: center;
     }
   
     .cardWrapper {

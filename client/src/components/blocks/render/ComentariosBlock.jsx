@@ -61,7 +61,6 @@ const ComentariosBlock = ({ configuration }) => {
                         referrerPolicy="no-referrer"
                       />
                     </div>
-                    <h4 className={styles.author}>{review.author_name}</h4>
                     <div className={styles.rating}>
                       {"★".repeat(review.rating) + "☆".repeat(5 - review.rating)}
                     </div>

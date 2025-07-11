@@ -12,7 +12,7 @@ const PublicacionesConfigurator = ({ config, onChange }) => {
     onChange(field, value);
   };
 
-  // Función para actualizar campos dentro del array "posts"
+  // Función para actualizar campos dentro del array "posts".
   const handlePostChange = (index, field, value) => {
     const updatedPosts = [...config.posts];
     updatedPosts[index][field] = value;
@@ -107,6 +107,16 @@ const PublicacionesConfigurator = ({ config, onChange }) => {
         </div>
       ))}
 
+      {/* Opción de color de fondo del bloque */}
+      <label className={styles.label}>
+        Color de fondo del bloque:
+        <input
+          type="color"
+          value={config.backgroundColor || '#ffffff'}
+          onChange={(e) => handleChange('backgroundColor', e.target.value)}
+          className={styles.input}
+        />
+      </label>
       {/* Configuración del botón principal */}
       <label className={styles.label}>
         Texto del botón:

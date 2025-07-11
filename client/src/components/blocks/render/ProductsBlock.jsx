@@ -150,8 +150,15 @@ const ProductsPromotionBlock = ({ configuration }) => {
               </div>
             </Link>
           ))}
+          {/* Imagen lateral izquierda si existe image2 */}
+            {configuration?.image2 && (
+              <div className={styles.lateralImage2Container}>
+                <img src={configuration.image2} className={styles.lateralImage2} alt="Imagen decorativa 2" />
+              </div>
+            )}
         </div>
 
+      </div>
         {/* Botón principal HACER EL PEDIDO */}
         {configuration?.mainButtonText && (
           <div className={styles.mainButtonContainer}>
@@ -170,7 +177,6 @@ const ProductsPromotionBlock = ({ configuration }) => {
                   
           </div>
         )}
-      </div>
     </div>
   );
 };
