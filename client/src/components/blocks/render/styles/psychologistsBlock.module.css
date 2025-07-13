@@ -1,7 +1,5 @@
 .psicologoscontainer {
-  padding: 0 2rem 2rem 2rem;
-    max-width: 800px;
-    margin: 0 auto;
+    padding: 50px 200px;
   }
   
   .card {
@@ -25,8 +23,8 @@
     flex-direction: column;
 }
   .image {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 300px;
     object-fit: cover;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -73,13 +71,18 @@
       display: flex;
       flex-direction: column;
       flex-wrap: wrap;
-      align-items: flex-start;
+      align-items: flex-end;
   }
   .contentpsright {
     display: flex;
+    flex-direction: row-reverse;
     flex-direction: column;
     flex-wrap: wrap;
-    align-items: flex-start;
+    align-items: flex-end;
+}
+
+.psicologoscontainer{
+  padding: 50px;
 }
   }
   

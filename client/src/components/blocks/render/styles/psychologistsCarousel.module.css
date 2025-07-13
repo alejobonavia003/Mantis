@@ -387,6 +387,7 @@
   z-index: 0;
   pointer-events: none;
   user-select: none;
+  display: none;
 }
 
 @media (max-width: 900px) {

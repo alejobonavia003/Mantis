@@ -6,6 +6,7 @@
     align-items: center;
     border-top: 1px solid #516f61;
     border-bottom: 1px solid #516f61;
+    background-color: #d3dcbb;
   }
 
 
@@ -82,7 +83,7 @@
   .largabutton3{
     padding: 0.8rem 1.8rem;
     background-color: #516f61;
-    color: #516f61;
+    color: #555;
     border: none;
     border-radius: 8px;
     text-decoration: none;
