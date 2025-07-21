@@ -83,19 +83,6 @@ const startServer = async () => {
 };
 
 
-// Sincronizar modelos de reseñas
-/**
-(async () => {
-  try {
-    await Review.sync();
-    await ReviewToken.sync();
-    console.log('Tablas Review y ReviewToken sincronizadas');
-  } catch (err) {
-    console.error('Error al sincronizar tablas de reseñas:', err);
-  }
-})();
- */
-
 
 
 startServer();

@@ -63,7 +63,7 @@ router.post('/materiales', async (req, res) => {
   try {
     const { nombre, apellido, telefono, email, material, conocio } = req.body;
 
-    const recipients = ["bonaviaalejo@gmail.com", "alejobonavia003i@gmail.com "];
+    const recipients = ["macasanti23@gmail.com", "licflorenciavisconti@gmail.com "];
 
     const htmlContent = `
       <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
